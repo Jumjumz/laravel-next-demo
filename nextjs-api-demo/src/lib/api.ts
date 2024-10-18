@@ -1,11 +1,9 @@
-import Axios from "axios";
+import axios from "axios";
 
-const axios = Axios.create({
+export default axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
     headers: {
         "X-Requested-With" : "XMLHttpRequest"
     },
     withCredentials: true
 });
-
-export default axios;

@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "@/lib/api";
 
 interface Post {
   id: number;
@@ -8,7 +8,7 @@ interface Post {
 
 async function getAxiosPost(): Promise<Post[] | undefined> {
   try {
-    const response = await axios.get("http://laravel-api-demo.test/api/posts");
+    const response = await api.get("/posts");
     return response.data;
   } catch (err) {
     console.error("Fetch failed", err);
