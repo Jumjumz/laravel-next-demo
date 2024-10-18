@@ -12,6 +12,7 @@ Route::get('/posts', function () {
         ['id' => 1, 'title' => 'First', 'message' => 'First Test API'],
         ['id' => 2, 'title' => 'Second', 'message' => 'I am so dumb!'],
         ['id' => 3, 'title' => 'WORKING!', 'message' => 'I am PRO!'],
+        ['id' => 4, 'title' => 'Samples', 'message' => 'Finally!'],
     ]);
 
 });
