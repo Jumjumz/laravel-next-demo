@@ -117,7 +117,7 @@ return [
         'mongodb' => [
             'driver' => 'mongodb',
             'dsn' => env('DB_URI', 'mongodb+srv://jumjumramos:9DyJNqcAe8YsRTy7@cluster0.kzcma.mongodb.net/products?retryWrites=true&w=majority&appName=Cluster0'),
-            'database' => 'myappdb',
+            'database' => 'mern-test',
         ]
 
     ],
