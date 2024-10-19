@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Lmscourse;
+
+//use Illuminate\Http\Request;
 
 class LmscourseController extends Controller
 {
-    //
+    public function index() {
+        $lmscourses = Lmscourse::all();
+        return response()->json($lmscourses);
+    }
 }
