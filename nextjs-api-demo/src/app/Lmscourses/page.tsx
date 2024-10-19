@@ -4,6 +4,7 @@ interface LmsCourses {
   _id: number;
   courseName: string;
   courseType: string;
+  courseWeekCompletion: string;
 }
 
 async function getAxiosPost(): Promise<LmsCourses[] | undefined> {
@@ -26,6 +27,7 @@ export default async function LmsCourses() {
             <li key={course._id} className="mb-6">
               <h2>{course.courseName}</h2>
               <h4>{course.courseType}</h4>
+              <h4>{course.courseWeekCompletion}</h4>
             </li>
           ))}
         </ul>
