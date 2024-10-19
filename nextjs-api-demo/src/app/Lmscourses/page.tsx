@@ -4,7 +4,7 @@ interface LmsCourses {
   _id: number;
   courseName: string;
   courseType: string;
-  courseWeekCompletion: string;
+  courseWeeksCompletion: number;
 }
 
 async function getAxiosPost(): Promise<LmsCourses[] | undefined> {
@@ -25,9 +25,12 @@ export default async function LmsCourses() {
         <ul className=" text-white font-mono text-xl">
           {lmscourse?.map((course: LmsCourses) => (
             <li key={course._id} className="mb-6">
-              <h2>{course.courseName}</h2>
-              <h4>{course.courseType}</h4>
-              <h4>{course.courseWeekCompletion}</h4>
+              <h2>
+                Course Name:&nbsp;
+                {course.courseName}
+              </h2>
+              <h4>Course Type:&nbsp;{course.courseType}</h4>
+              <h4>Course Completion:&nbsp;{course.courseWeeksCompletion}</h4>
             </li>
           ))}
         </ul>
