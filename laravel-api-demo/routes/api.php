@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LmscourseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Lmscourse;
@@ -18,9 +19,5 @@ Route::get('/posts', function () {
 
 });
 
-Route::get('/lmscourse', function () {
-    $lmscourses = Lmscourse::all();
-    return response()->json($lmscourses);
-
-});
+Route::get('/lmscourse', [LmscourseController::class, 'index']); // get courses
 
