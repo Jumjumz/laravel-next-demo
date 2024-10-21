@@ -12,4 +12,9 @@ class LmscourseController extends Controller
         $lmscourses = Lmscourse::all();
         return response()->json($lmscourses);
     }
+
+    public function create() {
+        $lmscourses = Lmscourse::create();
+        return response()->json($lmscourses);
+    }
 }
