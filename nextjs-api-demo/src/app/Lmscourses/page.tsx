@@ -31,18 +31,6 @@ export default async function LmsCourses() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <ul className=" text-white font-mono text-xl">
-          {lmscourse?.map((course: LmsCourses) => (
-            <li key={course._id} className="mb-6">
-              <h2>
-                Course Name:&nbsp;
-                {course.courseName}
-              </h2>
-              <h4>Course Type:&nbsp;{course.courseType}</h4>
-              <h4>Course Completion:&nbsp;{course.courseWeeksCompletion}</h4>
-            </li>
-          ))}
-        </ul>
         <Table className=" text-xl text-white font-mono">
           <TableCaption>Course List</TableCaption>
           <TableHeader>
