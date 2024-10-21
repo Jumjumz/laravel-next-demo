@@ -14,6 +14,7 @@ interface LmsCourses {
   courseName: string;
   courseType: string;
   courseWeeksCompletion: number;
+  coursePages: [];
 }
 
 async function getAxiosPost(): Promise<LmsCourses[] | undefined> {
@@ -36,14 +37,16 @@ export default async function LmsCourses() {
           <TableHeader>
             <TableHead>Course Name</TableHead>
             <TableHead>Course Type</TableHead>
-            <TableHead>Course Completion</TableHead>
+            <TableHead className=" text-right">Course Completion</TableHead>
           </TableHeader>
           <TableBody>
             {lmscourse?.map((course) => (
               <TableRow key={course._id}>
                 <TableCell>{course.courseName}</TableCell>
                 <TableCell>{course.courseType}</TableCell>
-                <TableCell>{course.courseWeeksCompletion}</TableCell>
+                <TableCell className=" text-right">
+                  {course.courseWeeksCompletion}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
