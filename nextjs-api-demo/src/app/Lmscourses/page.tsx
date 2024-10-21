@@ -1,4 +1,13 @@
 import api from "@/lib/api";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface LmsCourses {
   _id: number;
@@ -34,6 +43,25 @@ export default async function LmsCourses() {
             </li>
           ))}
         </ul>
+        <Table className=" font-medium text-white">
+          <TableCaption>Course List</TableCaption>
+          <TableHeader>
+            <TableHead>Course No.</TableHead>
+            <TableHead>Course Name</TableHead>
+            <TableHead>Course Type</TableHead>
+            <TableHead>Course Completion</TableHead>
+          </TableHeader>
+          <TableBody>
+            {lmscourse?.map((course) => (
+              <TableRow key={course._id}>
+                <TableCell>{course._id}</TableCell>
+                <TableCell>{course.courseName}</TableCell>
+                <TableCell>{course.courseType}</TableCell>
+                <TableCell>{course.courseWeeksCompletion}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </main>
     </div>
   );
