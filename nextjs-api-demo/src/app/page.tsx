@@ -8,7 +8,7 @@ interface Post {
 
 async function getAxiosPost(): Promise<Post[] | undefined> {
   try {
-    const response = await api.get("/posts");
+    const response = await api.get("/posts", { withCredentials: true });
     return response.data;
   } catch (err) {
     console.error("Fetch failed", err);

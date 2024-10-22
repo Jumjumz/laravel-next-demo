@@ -35,9 +35,11 @@ export default async function LmsCourses() {
         <Table className=" text-xl text-white font-mono w-[100rem]">
           <TableCaption>Course List</TableCaption>
           <TableHeader>
-            <TableHead>Course Name</TableHead>
-            <TableHead>Course Type</TableHead>
-            <TableHead className=" text-right">Course Completion</TableHead>
+            <TableRow>
+              <TableHead>Course Name</TableHead>
+              <TableHead>Course Type</TableHead>
+              <TableHead className=" text-right">Course Completion</TableHead>
+            </TableRow>
           </TableHeader>
           <TableBody>
             {lmscourse?.map((course) => (

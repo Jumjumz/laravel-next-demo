@@ -21,3 +21,6 @@ Route::get('/posts', function () {
 
 Route::get('/lmscourse', [LmscourseController::class, 'index']); // get courses
 Route::post('/lmscourse/create', [LmscourseController::class, 'create' ]); // create courses
+Route::get('sanctum/csrf-cookie', function (Request $request) {
+    return response()->json(('CSRF Token'));
+});
