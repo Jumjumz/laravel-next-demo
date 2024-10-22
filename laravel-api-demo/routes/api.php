@@ -19,10 +19,10 @@ Route::get('/posts', function () {
 
 });
 
-//Route::get('/lmscourse', [LmscourseController::class, 'index']); // get courses
-Route::middleware('auth:sanctum')->get('/lmscourse', function (Request $request) {
+Route::get('/lmscourse', [LmscourseController::class, 'index']); // get courses
+/*Route::middleware('auth:sanctum')->get('/lmscourse', function (Request $request) {
     return response()->json($request->lmscourses());
-});
+});*/
 Route::post('/lmscourse/create', [LmscourseController::class, 'create' ]); // create courses
 Route::get('sanctum/csrf-cookie', function (Request $request) {
     return response()->json(('CSRF Token'));
