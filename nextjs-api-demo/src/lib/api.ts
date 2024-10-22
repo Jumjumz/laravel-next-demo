@@ -13,6 +13,7 @@ export default axios.create({
         "X-Requested-With" : "XMLHttpRequest",
         "Content-Type" : "application/json",
         "Accept" : "application/json",
+        "Referer" : "localhost:3000",
     },
     withCredentials: true,
 });
