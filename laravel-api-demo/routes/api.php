@@ -30,3 +30,4 @@ Route::get('sanctum/csrf-cookie', function (Request $request) {
 });
 //Route::get('/users', [UserController::class, 'index']); // add user
 Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'index']);
+Route::post('/register', [UserController::class, 'register']); // create user
