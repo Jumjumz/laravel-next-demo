@@ -17,7 +17,7 @@ export default axios.create({
     withCredentials: true,
 });
 
-axios.defaults.withXSRFToken = true;
+axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(async (config) => {
     if((config.method as string).toLocaleLowerCase() !== 'get') {
