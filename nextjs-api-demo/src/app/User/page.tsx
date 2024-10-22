@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 
 interface User {
-  _id: number;
+  _id: string;
   Email: string;
   Password: string;
 }
