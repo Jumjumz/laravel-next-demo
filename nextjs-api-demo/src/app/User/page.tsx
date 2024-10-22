@@ -35,9 +35,8 @@ export default async function User() {
           <TableCaption>Course List</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead>Course Name</TableHead>
-              <TableHead>Course Type</TableHead>
-              <TableHead className=" text-right">Course Completion</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Password</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
