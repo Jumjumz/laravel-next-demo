@@ -9,4 +9,5 @@ class Lmscourse extends Model
 {
     protected $connection = 'mongodb';
     protected $collection = 'lmscourses';
+
 }

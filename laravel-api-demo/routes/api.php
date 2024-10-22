@@ -9,7 +9,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/posts', function () {
+Route::get('/posts', function () {
     return response()->json([
         ['id' => 1, 'title' => 'First', 'message' => 'First Test API'],
         ['id' => 2, 'title' => 'Second', 'message' => 'I am so dumb!'],
