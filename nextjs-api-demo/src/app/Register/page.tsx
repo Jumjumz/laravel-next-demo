@@ -1,13 +1,4 @@
 import api from "@/lib/api";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 interface Register {
   _id: string;
