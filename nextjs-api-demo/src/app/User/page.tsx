@@ -11,8 +11,8 @@ import {
 
 interface User {
   _id: string;
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
 }
 
 async function getAxiosUser(): Promise<User[] | undefined> {
@@ -42,8 +42,8 @@ export default async function User() {
           <TableBody>
             {users?.map((user) => (
               <TableRow key={user._id}>
-                <TableCell>{user.Email}</TableCell>
-                <TableCell>{user.Password}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{user.password}</TableCell>
               </TableRow>
             ))}
           </TableBody>
