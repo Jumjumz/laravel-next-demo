@@ -14,8 +14,7 @@ export default axios.create({
         "Content-Type" : "application/json",
         "Accept" : "application/json",
         "Referer" : "localhost:3000",
-    },
-    withCredentials: true,
+    }
 });
 
 axios.defaults.withCredentials = true;
@@ -25,6 +24,5 @@ axios.interceptors.request.use(async (config) => {
         await axios.get("sanctum/csrf-cookie").then()
         config.headers['X-XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
     }
-
     return config;
-})
+});

@@ -1,9 +1,12 @@
+//"use client";
+
 import api from "@/lib/api";
+import { useState } from "react";
 
 interface Register {
   _id: string;
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
 }
 
 async function getAxiosUser(): Promise<Register[] | undefined> {
@@ -11,8 +14,8 @@ async function getAxiosUser(): Promise<Register[] | undefined> {
     const response = await api.post(
       "/register",
       {
-        Email: "jummnextTest1@gmail.com",
-        Password: "1234",
+        email: "jumjumramos@gmail.com",
+        password: "1234",
       },
       { withCredentials: true }
     );
@@ -26,6 +29,7 @@ async function getAxiosUser(): Promise<Register[] | undefined> {
 
 export default async function Register() {
   let users = await getAxiosUser();
+  //const [register, setRegister] = useState({});
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"></main>
