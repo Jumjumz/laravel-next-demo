@@ -18,8 +18,8 @@ class UserController extends Controller
     }
     public function login(Request $request) {
         $credentials = $request->validate([
-            'Email' => 'required|Email',
-            'Password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -36,8 +36,8 @@ class UserController extends Controller
 
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
-            'Email' => 'required|string|unique:users|email|max:225',
-            'Password' => 'required|string|max:10'
+            'email' => 'required|string|unique:users|email|max:225',
+            'password' => 'required|string|max:10'
         ]);
 
         if($validator->fails()) {
@@ -45,8 +45,8 @@ class UserController extends Controller
         }
 
         $user = User::create([
-            'Email' => $request->Email,
-            'Password' => $request->Password,
+            'email' => $request->email,
+            'password' => $request->password,
         ]);
 
         return response()->json([
