@@ -4,13 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    public function index() {
-        $users = User::all();
-        return response()->json($users);
+    public function index(Request $request) {
+        $credentials = $request->validate([
+            'Email' => ['required', 'Email'],
+            'Password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            $users = User::all();
+            
+            return response()->json(['message' => __('Welcome'), $users]);
+        }
+        
+        throw ValidationException::withMessages([
+            'Email' => __('Invalid Credentials'),
+        ]);
+
     }
 
     public function register(Request $request) {
