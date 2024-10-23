@@ -10,7 +10,13 @@ use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    public function index(Request $request) {
+
+    public function index() {
+        $users = User::all();
+        
+        return response()->json($users);
+    }
+    public function login(Request $request) {
         $credentials = $request->validate([
             'Email' => ['required', 'Email'],
             'Password' => ['required'],
@@ -20,7 +26,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             $users = User::all();
             
-            return response()->json(['message' => __('Welcome'), $users]);
+            return response()->json(['message' => __('Welcome'), $users], 201);
         }
         
         throw ValidationException::withMessages([
