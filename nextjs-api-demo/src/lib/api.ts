@@ -1,10 +1,12 @@
 import axios from "axios";
 import https from "https";
 import Cookies from "js-cookie";
+import { config } from "process";
 
 const agent = new https.Agent({
     rejectUnauthorized: false, // ignore cert ! WARNING: DO NOT INCLUDE IN PROD ! 
 });
+
 
 export default axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
@@ -14,7 +16,8 @@ export default axios.create({
         "Content-Type" : "application/json",
         "Accept" : "application/json",
         "Referer" : "localhost:3000",
-    }
+    }, 
+    withCredentials: true,
 });
 
 axios.defaults.withCredentials = true;
