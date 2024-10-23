@@ -18,15 +18,14 @@ class UserController extends Controller
     }
     public function login(Request $request) {
         $credentials = $request->validate([
-            'Email' => ['required', 'Email'],
-            'Password' => ['required'],
+            'Email' => 'required|Email',
+            'Password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            $users = User::all();
             
-            return response()->json(['message' => __('Welcome'), $users], 201);
+            return response()->json(['message' => __('Welcome')], 201);
         }
         
         throw ValidationException::withMessages([
