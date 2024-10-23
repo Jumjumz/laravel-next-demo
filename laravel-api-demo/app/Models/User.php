@@ -33,8 +33,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    /*protected $hidden = [
-        'password',
+    protected $hidden = [
+        'Password',
         'remember_token',
     ];
 
@@ -43,11 +43,11 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    /*protected function casts(): array
+    protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'Password' => 'hashed',
         ];
-    }*/
+    }
 }
