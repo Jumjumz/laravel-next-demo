@@ -21,7 +21,7 @@ export default axios.create({
 axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(async (config) => {
-    if((config.method as string).toLocaleLowerCase() !== 'get') {
+    if((config.method as string).toLocaleLowerCase() !=='get') {
         await axios.get("sanctum/csrf-cookie").then()
         config.headers['X-XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
     }
