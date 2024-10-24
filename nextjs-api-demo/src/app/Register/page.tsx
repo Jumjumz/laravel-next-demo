@@ -19,6 +19,7 @@ async function getAxiosUser(): Promise<Register[] | undefined> {
       },
       { withCredentials: true }
     );
+
     console.log(response.headers);
     return response.data;
   } catch (err) {

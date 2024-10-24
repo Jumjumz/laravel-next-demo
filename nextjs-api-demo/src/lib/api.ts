@@ -11,6 +11,7 @@ export default axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
     httpsAgent: agent,
     headers: {
+        "X-Requested-With" : "XMLHttpRequest",
         "Accept" : "application/json",
         "Referer" : "localhost:3000",
     }, 
