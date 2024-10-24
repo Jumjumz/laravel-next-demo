@@ -12,6 +12,7 @@ export default axios.create({
     httpsAgent: agent,
     headers: {
         "X-Requested-With" : "XMLHttpRequest",
+        "Content-Type" : "application/json",
         "Accept" : "application/json",
     }, 
     withCredentials: true,
