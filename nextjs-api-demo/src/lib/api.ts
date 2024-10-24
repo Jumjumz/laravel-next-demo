@@ -16,6 +16,8 @@ export default axios.create({
         "Referer" : "localhost:3000",
     }, 
     withCredentials: true,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
 });
 
 axios.defaults.withCredentials = true;
