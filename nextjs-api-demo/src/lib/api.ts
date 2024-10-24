@@ -13,7 +13,6 @@ export default axios.create({
     headers: {
         "X-Requested-With" : "XMLHttpRequest",
         "Accept" : "application/json",
-        "Referer" : "localhost:3000",
     }, 
     withCredentials: true,
     xsrfCookieName: 'XSRF-TOKEN',
