@@ -14,7 +14,7 @@ async function postAxiosRegister(): Promise<Register[] | undefined> {
     const response = await api.post(
       "/register",
       {
-        email: "jumzfromnextWTF@gmail.com",
+        email: "jumzfromnextfromClick@gmail.com",
         password: "1234",
       },
       { withCredentials: true }
@@ -34,7 +34,14 @@ export default function Register() {
   //const [register, setRegister] = useState({});
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"></main>
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <button
+          onClick={() => users}
+          className=" bg-white w-56 h-24 font-black"
+        >
+          PRESS HERE
+        </button>
+      </main>
     </div>
   );
 }
