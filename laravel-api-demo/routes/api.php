@@ -24,8 +24,8 @@ Route::get('/lmscourse', [LmscourseController::class, 'index']); // get courses
     return response()->json($request->lmscourses());
 });*/
 Route::post('/lmscourse/create', [LmscourseController::class, 'create' ]); // create courses
-Route::get('sanctum/csrf-cookie', function (Request $request) {
-    return response()->json(('CSRF Token'));
+Route::get('/sanctum/csrf-cookie', function () {
+    return response()->json('CSRF TOKEN');
 });
 //Route::get('/users', [UserController::class, 'index']); // add user
 Route::get('/users', [UserController::class, 'index']);
@@ -36,5 +36,6 @@ Route::get('/users', [UserController::class, 'index']);
     Route::post('/register', UserController::class)->middleware('guest');
 });*/
 Route::post('/login', [UserController::class, 'login'])->middleware('guest');
-Route::post('/register', [UserController::class, 'register'])->middleware('auth:sanctum');
+Route::post('/register', [UserController::class, 'register'])->middleware('guest');
+Route::get('/auth/users', [UserController::class, 'index'])->middleware('auth:sanctum');
 Route::post('/logout', [UserController::class, 'logout']);

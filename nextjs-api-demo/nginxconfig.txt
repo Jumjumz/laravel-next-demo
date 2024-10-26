@@ -1,0 +1,94 @@
+# ISOLATED_PHP_VERSION=83
+server {
+    listen 127.0.0.1:80;
+    #listen 127.0.0.1:80; # valet loopback
+    server_name next.test www.next.test *.next.test;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 127.0.0.1:443 ssl;
+    #listen VALET_LOOPBACK:443 ssl; # valet loopback
+    server_name next.test www.next.test *.next.test;
+    root /;
+    charset utf-8;
+    client_max_body_size 512M;
+    http2 on;
+
+    location ~* /41c270e4-5535-4daa-b23e-c269744c2f45/([A-Z]+:)(.*) {
+        internal;
+        alias $1;
+        try_files $2 $2/;
+    }
+
+    ssl_certificate "C:/Users/JUMJUMZ/.config/herd/config/valet/Certificates/next.test.crt";
+    ssl_certificate_key "C:/Users/JUMJUMZ/.config/herd/config/valet/Certificates/next.test.key";
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log "C:/Users/JUMJUMZ/.config/herd/Log/nginx-error.log";
+
+    error_page 404 "C:/Program Files/Herd/resources/app.asar.unpacked/resources/valet/server.php";
+    
+    location / {
+        proxy_pass http://127.0.0.1:3000;  # Forward traffic to Next.js dev server
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        # Optional: WebSocket support (if needed for Next.js HMR)
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+server {
+    listen 127.0.0.1:60;
+    #listen 127.0.0.1:60; # valet loopback
+    server_name next.test www.next.test *.next.test;
+    root /;
+    charset utf-8;
+    client_max_body_size 128M;
+
+    add_header X-Robots-Tag 'noindex, nofollow, nosnippet, noarchive';
+
+    location ~* /41c270e4-5535-4daa-b23e-c269744c2f45/([A-Z]+:)(.*) {
+        internal;
+        alias /;
+        try_files $uri $uri/;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log "C:/Users/JUMJUMZ/.config/herd/Log/nginx-error.log";
+
+    error_page 404 "C:/Program Files/Herd/resources/app.asar.unpacked/resources/valet/server.php";
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;  # Forward traffic to Next.js dev server
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        # Optional: WebSocket support (if needed for Next.js HMR)
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+

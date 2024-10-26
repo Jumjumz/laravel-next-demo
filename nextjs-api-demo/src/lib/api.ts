@@ -1,31 +1,32 @@
 import axios from "axios";
 import https from "https";
 import Cookies from "js-cookie";
+import { headers } from "next/headers";
 
 const agent = new https.Agent({
     rejectUnauthorized: false, // ignore cert ! WARNING: DO NOT INCLUDE IN PROD ! 
 });
 
 
-export default axios.create({
+const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
     httpsAgent: agent,
     headers: {
         "X-Requested-With" : "XMLHttpRequest",
-        "Content-Type" : "application/json",
         "Accept" : "application/json",
     }, 
-    withCredentials: true,
-    xsrfCookieName: 'XSRF-TOKEN',
-    xsrfHeaderName: 'X-XSRF-TOKEN',
 });
 
 axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+axios.defaults.xsrfHeaderName = "XSRF-TOKEN";
 
 axios.interceptors.request.use(async (config) => {
-    if((config.method as string).toLocaleLowerCase() !== 'get') {
-        await axios.get("sanctum/csrf-cookie").then()
-        config.headers['X-XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
-    }
+    await axios.get("/sanctum/csrf-cookie").then();
+    config.headers['X-XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
+    //config.headers.Authorization = `Bearer ${Cookies.get('laravel_session')}`;
+    //console.log("test", Cookies.get('X-XSRF-TOKEN'));
     return config;
 });
+
+export default api;

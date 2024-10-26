@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*'],
+    'paths' => ['*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000'), env('SANCTUM_STATEFUL_DOMAINS', 'http://localhost:3000')],
+    'allowed_origins' => [env('FRONTEND_URL', 'https://next.example.test')],
 
     'allowed_origins_patterns' => [],
 
@@ -27,7 +27,7 @@ return [
 
     'exposed_headers' => [],
 
-    'max_age' => 0,
+    'max_age' => 24 * 3600,
 
     'supports_credentials' => true,
 

@@ -14,7 +14,7 @@ async function postAxiosRegister(): Promise<Register[] | undefined> {
     const response = await api.post(
       "/register",
       {
-        email: "jumzfromnext@gmail.com",
+        email: "jumzfromnextWTF@gmail.com",
         password: "1234",
       },
       { withCredentials: true }
