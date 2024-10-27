@@ -25,7 +25,7 @@ export default function Register() {
         },
         { withCredentials: true }
       );
-      setMessage("New User has been Registered");
+      setMessage("User Registered!");
     } catch (err) {
       console.error("Post failed", err);
       setMessage("Failed to Register");
