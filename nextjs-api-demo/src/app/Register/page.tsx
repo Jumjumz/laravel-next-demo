@@ -5,8 +5,8 @@ import { useState } from "react";
 
 interface Register {
   _id: string;
-  regEmail: string;
-  regPassword: string;
+  email: string;
+  password: string;
 }
 
 export default function Register() {
