@@ -5,15 +5,18 @@ import { useState } from "react";
 
 interface Register {
   _id: string;
-  email: string;
-  password: string;
+  regEmail: string;
+  regPassword: string;
 }
 
-export default function Register({ email, password }: Register) {
+export default function Register() {
   //const [register, setRegister] = useState({});
   const [message, setMessage] = useState<string | null>();
-  async function postAxiosRegister() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  async function postAxiosRegister(event: React.FormEvent) {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
+    event.preventDefault();
     try {
       await api.get("/sanctum/csrf-cookie", { withCredentials: true });
 
@@ -45,6 +48,7 @@ export default function Register({ email, password }: Register) {
             <input
               type="email"
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               required
               className="w-full h-8"
@@ -52,6 +56,7 @@ export default function Register({ email, password }: Register) {
             <input
               type="password"
               value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
               className="w-full h-8"
