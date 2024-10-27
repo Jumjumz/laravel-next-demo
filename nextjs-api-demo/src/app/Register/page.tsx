@@ -9,39 +9,49 @@ interface Register {
   password: string;
 }
 
-async function postAxiosRegister(): Promise<Register[] | undefined> {
+async function postAxiosRegister() {
+  const [message, setMessage] = useState<string | null>();
+  //const [resData, setResData] = useState(Promise<Register | undefined>);
   try {
     const response = await api.post(
       "/register",
       {
-        email: "jumzfromnextfromClick@gmail.com",
+        email: "jumzfromnextButton@gmail.com",
         password: "1234",
       },
       { withCredentials: true }
     );
-
-    console.log(response.headers);
-    return response.data;
+    setMessage("New User has been Registered");
+    //setResData(response.data);
   } catch (err) {
-    console.error("Fetch failed", err);
-    return undefined;
+    console.error("Post failed", err);
+    setMessage("Failed Registering the user");
   }
 }
 
+/*const handleRegister = () => {
+  const [message, setMessage] = useState<string | null>();
+  async function postAxiosRegister() {
+    try {
+      const response = await api.post("/register",
+        {
+          email : "jumzfromButton@gmail.com",
+          password : "1234",
+        }, { withCredentials: true }
+      );
+      setMessage("New User has been registered!")
+    } catch (error) {
+      setMessage("Registration Failed!")
+      console.error(setMessage);
+    }
+  }
+}*/
+
 export default function Register() {
-  //let users = await getAxiosUser();
-  let users = postAxiosRegister();
   //const [register, setRegister] = useState({});
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <button
-          onClick={() => users}
-          className=" bg-white w-56 h-24 font-black"
-        >
-          PRESS HERE
-        </button>
-      </main>
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"></main>
     </div>
   );
 }
