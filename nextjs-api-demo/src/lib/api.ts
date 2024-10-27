@@ -12,20 +12,17 @@ const api = axios.create({
     headers: {
         "X-Requested-With" : "XMLHttpRequest",
         "Accept" : "application/json",
-    }, 
+        "Content-Type" : "application/json",
+    },
+    withCredentials : true,
+    withXSRFToken : true,
+    xsrfCookieName : "XSRF-TOKEN",
+
 });
 
-axios.defaults.withCredentials = true;
+/*axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
-axios.defaults.xsrfHeaderName = "XSRF-TOKEN";
-
-axios.interceptors.request.use(async (config) => {
-    await axios.get("/sanctum/csrf-cookie").then();
-    config.headers['X-XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
-    //config.headers.Authorization = `Bearer ${Cookies.get('laravel_session')}`;
-    //console.log("test", Cookies.get('X-XSRF-TOKEN'));
-    return config;
-});
+axios.defaults.xsrfHeaderName = "XSRF-TOKEN";*/
 
 
 export default api;
