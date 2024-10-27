@@ -38,4 +38,4 @@ Route::get('/users', [UserController::class, 'index']);
 Route::post('/login', [UserController::class, 'login'])->middleware('guest');
 Route::post('/register', [UserController::class, 'register'])->middleware('guest');
 Route::get('/auth/users', [UserController::class, 'index'])->middleware('auth:sanctum');
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');

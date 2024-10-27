@@ -14,6 +14,7 @@ export default function Register() {
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   async function postAxiosRegister(event: React.FormEvent) {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
     event.preventDefault();
