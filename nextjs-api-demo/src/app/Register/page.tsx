@@ -29,24 +29,6 @@ async function postAxiosRegister() {
   }
 }
 
-/*const handleRegister = () => {
-  const [message, setMessage] = useState<string | null>();
-  async function postAxiosRegister() {
-    try {
-      const response = await api.post("/register",
-        {
-          email : "jumzfromButton@gmail.com",
-          password : "1234",
-        }, { withCredentials: true }
-      );
-      setMessage("New User has been registered!")
-    } catch (error) {
-      setMessage("Registration Failed!")
-      console.error(setMessage);
-    }
-  }
-}*/
-
 export default function Register() {
   //const [register, setRegister] = useState({});
   return (
