@@ -62,14 +62,10 @@ export default function Login() {
               required
               className="w-full h-8"
             />
-            <button type="submit" className="w-full h-8 bg-white rounded-md">
-              Register
-            </button>
             <link href="/dashbaord" className="w-full h-8 bg-white rounded-md">
               Login
             </link>
           </form>
-          <h4 className="w-full text-center text-white">{message}</h4>
         </div>
       </main>
     </div>
