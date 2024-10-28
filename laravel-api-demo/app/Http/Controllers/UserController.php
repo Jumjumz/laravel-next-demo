@@ -28,7 +28,7 @@ class UserController extends Controller
         }
         
         throw ValidationException::withMessages([
-            'Email' => __('Invalid Credentials'),
+            'email' => __('Invalid Credentials'),
         ]);
 
     }
