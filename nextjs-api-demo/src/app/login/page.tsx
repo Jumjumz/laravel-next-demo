@@ -15,7 +15,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function postAxiosRegister(event: React.FormEvent) {
+  async function postAxiosLogin(event: React.FormEvent) {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
     event.preventDefault();
     try {
@@ -32,7 +32,7 @@ export default function Login() {
       setMessage("User Logged In");
     } catch (err) {
       console.error("Post failed", err);
-      setMessage("Failed to Register");
+      setMessage("Failed to Log In");
     }
   }
 
@@ -41,7 +41,7 @@ export default function Login() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className=" w-80 h-72">
           <form
-            onSubmit={postAxiosRegister}
+            onSubmit={postAxiosLogin}
             method="POST"
             className="flex flex-row flex-wrap w-full gap-4 justify-center"
           >
