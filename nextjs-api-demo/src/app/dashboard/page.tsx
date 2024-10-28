@@ -17,7 +17,7 @@ interface User {
 
 async function getAxiosUser(): Promise<User[] | undefined> {
   try {
-    const response = await api.get("/users");
+    const response = await api.get("/auth/users");
     console.log(response.headers);
     return response.data;
   } catch (err) {
@@ -32,7 +32,7 @@ export default async function Dashboard() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Table className=" text-xl text-white font-mono w-[100rem]">
-          <TableCaption>User List</TableCaption>
+          <TableCaption>Dashboard User List</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Email</TableHead>
