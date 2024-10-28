@@ -63,12 +63,9 @@ export default function Login() {
               required
               className="w-full h-8"
             />
-            <Link
-              href="/dashboard"
-              className="w-full h-8 bg-white rounded-md text-center p-1"
-            >
+            <button type="submit" className="w-full h-8 bg-white rounded-md">
               Login
-            </Link>
+            </button>
           </form>
           <h4 className="w-full text-center text-white">{message}</h4>
         </div>
