@@ -1,6 +1,7 @@
 "use client";
 
 import api from "@/lib/api";
+import Link from "next/link";
 import { useState } from "react";
 
 interface Register {
@@ -62,10 +63,14 @@ export default function Login() {
               required
               className="w-full h-8"
             />
-            <link href="/dashbaord" className="w-full h-8 bg-white rounded-md">
+            <Link
+              href="/dashboard"
+              className="w-full h-8 bg-white rounded-md text-center p-1"
+            >
               Login
-            </link>
+            </Link>
           </form>
+          <h4 className="w-full text-center text-white">{message}</h4>
         </div>
       </main>
     </div>
