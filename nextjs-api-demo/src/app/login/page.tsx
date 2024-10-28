@@ -2,6 +2,7 @@
 
 import api from "@/lib/api";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface Register {
@@ -15,6 +16,7 @@ export default function Login() {
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   async function postAxiosLogin(event: React.FormEvent) {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
@@ -63,7 +65,11 @@ export default function Login() {
               required
               className="w-full h-8"
             />
-            <button type="submit" className="w-full h-8 bg-white rounded-md">
+            <button
+              onClick={() => router.push("/dashboard")}
+              type="submit"
+              className="w-full h-8 bg-white rounded-md"
+            >
               Login
             </button>
           </form>
