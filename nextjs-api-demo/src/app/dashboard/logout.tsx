@@ -9,7 +9,7 @@ interface User {
   password: string;
 }
 
-export default async function Dashboard() {
+export default async function Logout() {
   const [email, setEmail] = useState<string | null>();
   const [password, setPassword] = useState<string | null>();
   async function getAxiosLogout(
