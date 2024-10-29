@@ -12,12 +12,9 @@ class UserController extends Controller
 {
 
     public function index(Request $request) {
-        $credentials = $request->validate(['email' => 'required|email']);
+        $users = User::all();
         
-        if (Auth::attempt($credentials)) {
-            $users = User::all();
-            return response()->json($users);
-        }
+        return response()->json($users);
     }
 
     public function users() {
