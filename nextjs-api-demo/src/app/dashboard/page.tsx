@@ -1,5 +1,3 @@
-"use client";
-
 import api from "@/lib/api";
 import Logout from "./logout";
 import {
@@ -11,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useState } from "react";
 
 interface User {
   _id: string;
@@ -20,21 +17,14 @@ interface User {
 }
 
 export default function Dashboard() {
-  const [users, setUsers] = useState<Array<string | null> | null>();
+  //const [users, setUsers] = useState<Array<string | null> | null>();
 
   async function getAxiosUser({ email, password }: User) {
     try {
       //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
-      const response = await api.get("/auth/users");
-      return setUsers(
-        response.data({
-          email: email,
-          password: password,
-        })
-      );
+      const response = await api.get("/auth/users").then();
     } catch (err) {
       console.error("Fetch failed", err);
-      return setUsers(null);
     }
   }
   return (
