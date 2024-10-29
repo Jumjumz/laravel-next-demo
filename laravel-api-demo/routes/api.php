@@ -27,7 +27,7 @@ Route::post('/lmscourse/create', [LmscourseController::class, 'create' ]); // cr
 Route::get('/sanctum/csrf-cookie', function () {
     return response()->json('CSRF TOKEN');
 });
-//Route::get('/users', [UserController::class, 'index']); // add user
+Route::get('/disp/users', [UserController::class, 'users']); // add user
 //Route::get('/users', [UserController::class, 'index']);
 /*Route::prefix('auth/spa')->group(function () {
     Route::post('/users', UserController::class)->middleware('guest');

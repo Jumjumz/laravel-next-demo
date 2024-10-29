@@ -11,7 +11,16 @@ use Illuminate\Validation\ValidationException;
 class UserController extends Controller
 {
 
-    public function index() {
+    public function index(Request $request) {
+        $credentials = $request->validate(['email' => 'required|email']);
+        
+        if (Auth::attempt($credentials)) {
+            $users = User::all();
+            return response()->json($users);
+        }
+    }
+
+    public function users() {
         $users = User::all();
         
         return response()->json($users);

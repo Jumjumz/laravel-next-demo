@@ -2,6 +2,7 @@
 
 import api from "@/lib/api";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Register {
   _id: string;
@@ -14,6 +15,7 @@ export default function Register() {
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   async function postAxiosRegister(event: React.FormEvent) {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
@@ -30,6 +32,7 @@ export default function Register() {
         { withCredentials: true }
       );
       setMessage("User Registered!");
+      router.push("/dashboard");
     } catch (err) {
       console.error("Post failed", err);
       setMessage("Failed to Register");
