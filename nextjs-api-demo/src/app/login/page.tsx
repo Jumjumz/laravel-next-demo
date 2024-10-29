@@ -64,11 +64,7 @@ export default function Login() {
               required
               className="w-full h-8"
             />
-            <button
-              onClick={() => router.push("/dashboard")}
-              type="submit"
-              className="w-full h-8 bg-white rounded-md"
-            >
+            <button type="submit" className="w-full h-8 bg-white rounded-md">
               Login
             </button>
           </form>
