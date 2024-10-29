@@ -18,8 +18,8 @@ interface User {
 
 async function getAxiosUser(): Promise<User[] | undefined> {
   try {
-    await api.get("/sanctum/csrf-cookie", { withCredentials: true });
-    const response = await api.get("/auth/users", { withCredentials: true });
+    //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
+    const response = await api.get("/users", { withCredentials: true });
     return response.data;
   } catch (err) {
     console.error("Fetch failed", err);

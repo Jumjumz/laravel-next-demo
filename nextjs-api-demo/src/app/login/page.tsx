@@ -32,6 +32,7 @@ export default function Login() {
         { withCredentials: true }
       );
       setMessage("User Logged In");
+      router.push("/dashboard");
     } catch (err) {
       console.error("Post failed", err);
       setMessage("Failed to Log In");
