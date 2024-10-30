@@ -17,7 +17,7 @@ interface User {
 
 async function getAxiosUser(): Promise<User[] | undefined> {
   try {
-    const response = await api.get("/users");
+    const response = await api.get("/disp/users");
     console.log(response.headers);
     return response.data;
   } catch (err) {
