@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Cookies from "js-cookie";
 
 interface User {
   _id: string;
@@ -19,7 +20,13 @@ interface User {
 async function getAxiosUser(): Promise<User[] | undefined> {
   try {
     //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
-    const response = await api.get("/users", { withCredentials: true });
+    const xsrfToken = Cookies.get("XSRF-TOKEN");
+    const response = await api.get("/users", {
+      headers: {
+        Authorization: `Bearer ${xsrfToken}`,
+      },
+      withCredentials: true,
+    });
     console.log(response.headers);
     return response.data;
   } catch (err) {
