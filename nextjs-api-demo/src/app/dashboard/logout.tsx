@@ -9,32 +9,26 @@ interface User {
   password: string;
 }
 
-export default async function Logout() {
-  const [email, setEmail] = useState<string | null>();
-  const [password, setPassword] = useState<string | null>();
-  async function getAxiosLogout(
-    email: string | null,
-    password: string | null
-  ): Promise<User[] | undefined> {
+export default async function Logout({ email, password }: User) {
+  const [regEmail, setRegEmail] = useState<string | null>();
+  const [regPassword, setRegPassword] = useState<string | null>();
+  async function getAxiosLogout() {
     try {
       //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
 
-      const response = await api.post(
+      await api.post(
         "/logout",
         {
-          email: setEmail(email),
-          password: setPassword(password),
+          email: setRegEmail(email),
+          password: setRegPassword(password),
         },
         { withCredentials: true }
       );
-      console.log(response.headers);
-      return response.data;
+      return { regEmail, regPassword };
     } catch (err) {
       console.error("Fetch failed", err);
-      return undefined;
+      return null;
     }
   }
-  return (
-    <button onClick={() => getAxiosLogout(email!, password!)}>Logout</button>
-  );
+  return <button onClick={() => getAxiosLogout()}>Logout</button>;
 }

@@ -18,7 +18,7 @@ interface User {
 
 async function getAxiosUser(): Promise<User[] | undefined> {
   try {
-    //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
+    await api.get("/sanctum/csrf-cookie", { withCredentials: true });
     const response = await api.get("/users");
     //console.log(response.headers);
     return response.data;
@@ -35,7 +35,6 @@ export default async function Dashboard() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Logout />
         <Table className=" text-xl text-white font-mono w-[100rem]">
           <TableCaption>Dashboard User List</TableCaption>
           <TableHeader>
