@@ -20,7 +20,6 @@ interface User {
 }
 
 async function getAxiosUser(): Promise<User[] | undefined> {
-  //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
   try {
     const response = await api.get("/users", { withCredentials: true });
     //console.log(response.headers);
@@ -32,8 +31,6 @@ async function getAxiosUser(): Promise<User[] | undefined> {
 }
 
 export default function Dashboard() {
-  //const [users, setUsers] = useState<Array<string | null> | null>();
-  //const authUsers = getAxiosUser();
   const [users, setUsers] = useState<User[] | undefined>();
 
   useEffect(() => {
