@@ -31,18 +31,16 @@ async function getAxiosUser(): Promise<User[] | undefined> {
   }
 }
 
-export default async function Dashboard() {
+export default function Dashboard() {
   //const [users, setUsers] = useState<Array<string | null> | null>();
   //const authUsers = getAxiosUser();
   const [users, setUsers] = useState<User[] | undefined>();
 
   useEffect(() => {
-    const axiosUsers = async () => {
-      const data = await getAxiosUser();
-      setUsers(data);
-    };
-    axiosUsers();
-  }, [setUsers]);
+    getAxiosUser().then((response) => {
+      setUsers(response);
+    });
+  }, []);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
