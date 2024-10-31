@@ -1,3 +1,5 @@
+"use client";
+
 import api from "@/lib/api";
 import Logout from "./logout";
 import {
@@ -9,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useEffect, useState } from "react";
 
 interface User {
   _id: string;
@@ -30,7 +33,16 @@ async function getAxiosUser(): Promise<User[] | undefined> {
 
 export default async function Dashboard() {
   //const [users, setUsers] = useState<Array<string | null> | null>();
-  const authUsers = await getAxiosUser();
+  //const authUsers = getAxiosUser();
+  const [users, setUsers] = useState<User[] | undefined>();
+
+  useEffect(() => {
+    const axiosUsers = async () => {
+      const data = await getAxiosUser();
+      setUsers(data);
+    };
+    axiosUsers();
+  }, [setUsers]);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
@@ -44,7 +56,7 @@ export default async function Dashboard() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {authUsers?.map((user) => (
+            {users?.map((user) => (
               <TableRow key={user._id}>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.password}</TableCell>
