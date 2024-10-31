@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'https://next.example.test')],
+    'allowed_origins' => [env('FRONTEND_URL', 'https://demo.test')],
 
     'allowed_origins_patterns' => [],
 
