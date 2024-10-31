@@ -17,8 +17,8 @@ interface User {
 }
 
 async function getAxiosUser(): Promise<User[] | undefined> {
+  await api.get("/sanctum/csrf-cookie", { withCredentials: true });
   try {
-    await api.get("/sanctum/csrf-cookie", { withCredentials: true });
     const response = await api.get("/users");
     //console.log(response.headers);
     return response.data;

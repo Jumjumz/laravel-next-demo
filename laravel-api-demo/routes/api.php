@@ -37,5 +37,6 @@ Route::get('/disp/users', [UserController::class, 'users']); // add user
 });*/
 Route::post('/login', [UserController::class, 'login'])->middleware('guest');
 Route::post('/register', [UserController::class, 'register'])->middleware('guest');
-Route::get('/users', [UserController::class, 'index'])->middleware('auth:sanctum');
+//Route::get('/users', [UserController::class, 'index'])->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'index']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
