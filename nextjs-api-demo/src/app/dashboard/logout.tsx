@@ -9,7 +9,7 @@ interface User {
   password: string;
 }
 
-export default async function Logout({ email, password }: User) {
+export default function Logout({ email, password }: User) {
   const [regEmail, setRegEmail] = useState<string | null>();
   const [regPassword, setRegPassword] = useState<string | null>();
   async function getAxiosLogout() {
