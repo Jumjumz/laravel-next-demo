@@ -35,14 +35,16 @@ Route::get('/disp/users', [UserController::class, 'users']); // add user
 /*Route::prefix('auth/spa')->group(function () {
     Route::post('/register', UserController::class)->middleware('guest');
 });*/
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/users', [UserController::class, 'index']);
-    Route::post('/logout', [UserController::class, 'logout']);
-});
 Route::middleware('guest')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'register']);
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/users', [UserController::class, 'index']);
+    Route::post('/logout', [UserController::class, 'logout']);
+});
+
 //Route::post('/login', [UserController::class, 'login'])->middleware('guest');
 //Route::post('/register', [UserController::class, 'register'])->middleware('guest');
 //Route::get('/users', [UserController::class, 'index'])->middleware('auth:sanctum');
