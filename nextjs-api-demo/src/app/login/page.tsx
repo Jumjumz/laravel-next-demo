@@ -23,7 +23,7 @@ export default function Login() {
     try {
       await api.get("/sanctum/csrf-cookie", { withCredentials: true });
 
-      await api.post(
+      const response = await api.post(
         "/login",
         {
           email: email,
@@ -31,8 +31,9 @@ export default function Login() {
         },
         { withCredentials: true }
       );
-      setMessage("User Logged In");
+      setMessage(response.data);
       router.push("/dashboard");
+      //router.push(`/dashboard/?email=${email}`);
     } catch (err) {
       console.error("Post failed", err);
       setMessage("Failed to Log In");
