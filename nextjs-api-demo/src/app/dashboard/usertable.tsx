@@ -53,7 +53,6 @@ export default function UserTable() {
         {users?.map((user) => (
           <TableRow key={user.id}>
             <TableCell>{user.email}</TableCell>
-            <TableCell>{user.password}</TableCell>
           </TableRow>
         ))}
       </TableBody>
