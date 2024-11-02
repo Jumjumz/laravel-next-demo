@@ -39,7 +39,7 @@ export default function UserTable() {
   }, []);
 
   return (
-    <Table className=" text-xl text-white font-mono w-[100rem]">
+    <Table className=" text-xl text-white font-mono border-[1px]">
       <TableCaption>Dashboard User List</TableCaption>
       <TableHeader>
         <TableRow>
