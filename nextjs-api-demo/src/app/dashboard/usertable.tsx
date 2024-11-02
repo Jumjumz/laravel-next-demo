@@ -39,24 +39,22 @@ export default function UserTable() {
   }, []);
 
   return (
-    <div className=" w-full h-auto">
-      <Table className=" text-xl text-white font-mono w-[100rem]">
-        <TableCaption>Dashboard User List</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Email</TableHead>
-            <TableHead>Password</TableHead>
+    <Table className=" text-xl text-white font-mono w-[100rem]">
+      <TableCaption>Dashboard User List</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Email</TableHead>
+          <TableHead>Password</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {users?.map((user) => (
+          <TableRow key={user._id}>
+            <TableCell>{user.email}</TableCell>
+            <TableCell>{user.password}</TableCell>
           </TableRow>
-        </TableHeader>
-        <TableBody>
-          {users?.map((user) => (
-            <TableRow key={user._id}>
-              <TableCell>{user.email}</TableCell>
-              <TableCell>{user.password}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+        ))}
+      </TableBody>
+    </Table>
   );
 }
