@@ -44,7 +44,9 @@ export default function UserTable() {
       <TableHeader>
         <TableRow>
           <TableHead>Email</TableHead>
-          <TableHead>Password</TableHead>
+          <TableHead>Role</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead>Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
