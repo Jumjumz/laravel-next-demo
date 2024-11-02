@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 
 interface User {
-  _id: string;
+  id: string;
   email: string;
   password: string;
 }
@@ -49,7 +49,7 @@ export default function UserTable() {
       </TableHeader>
       <TableBody>
         {users?.map((user) => (
-          <TableRow key={user._id}>
+          <TableRow key={user.id}>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.password}</TableCell>
           </TableRow>
