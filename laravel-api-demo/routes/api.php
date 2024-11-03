@@ -20,9 +20,7 @@ Route::get('/posts', function () {
 });
 
 Route::get('/lmscourse', [LmscourseController::class, 'index']); // get courses
-/*Route::middleware('auth:sanctum')->get('/lmscourse', function (Request $request) {
-    return response()->json($request->lmscourses());
-});*/
+
 Route::post('/lmscourse/create', [LmscourseController::class, 'create' ]); // create courses
 Route::get('/sanctum/csrf-cookie', function () {
     return response()->json('CSRF TOKEN');
@@ -38,9 +36,3 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [UserController::class, 'index']);
     Route::post('/logout', [UserController::class, 'logout']);
 });
-
-//Route::post('/login', [UserController::class, 'login'])->middleware('guest');
-//Route::post('/register', [UserController::class, 'register'])->middleware('guest');
-//Route::get('/users', [UserController::class, 'index'])->middleware('auth:sanctum');
-//Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'index']);
-//Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
