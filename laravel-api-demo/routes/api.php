@@ -28,13 +28,7 @@ Route::get('/sanctum/csrf-cookie', function () {
     return response()->json('CSRF TOKEN');
 });
 Route::get('/disp/users', [UserController::class, 'users']); // add user
-//Route::get('/users', [UserController::class, 'index']);
-/*Route::prefix('auth/spa')->group(function () {
-    Route::post('/users', UserController::class)->middleware('guest');
-});
-/*Route::prefix('auth/spa')->group(function () {
-    Route::post('/register', UserController::class)->middleware('guest');
-});*/
+
 Route::middleware('guest')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'register']);

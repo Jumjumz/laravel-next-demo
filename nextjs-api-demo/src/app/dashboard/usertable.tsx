@@ -21,7 +21,6 @@ interface User {
 async function getAxiosUser(): Promise<User[] | undefined> {
   try {
     const response = await api.get("/users", { withCredentials: true });
-    //console.log(response.headers);
     return response.data;
   } catch (err) {
     console.error("Fetch failed", err);
