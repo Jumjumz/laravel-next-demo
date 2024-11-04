@@ -10,7 +10,6 @@ interface User {
 
 export default function Logout({ email }: User) {
   const [regEmail, setRegEmail] = useState<string | null>();
-  const [regPassword, setRegPassword] = useState<string | null>();
   async function getAxiosLogout() {
     try {
       //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
@@ -19,11 +18,10 @@ export default function Logout({ email }: User) {
         "/logout",
         {
           email: setRegEmail(email),
-          password: setRegPassword(password),
         },
         { withCredentials: true }
       );
-      return { regEmail, regPassword };
+      return { regEmail };
     } catch (err) {
       console.error("Fetch failed", err);
       return null;
