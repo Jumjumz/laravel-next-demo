@@ -6,10 +6,9 @@ import { useState } from "react";
 interface User {
   _id: string;
   email: string;
-  password: string;
 }
 
-export default function Logout({ email, password }: User) {
+export default function Logout({ email }: User) {
   const [regEmail, setRegEmail] = useState<string | null>();
   const [regPassword, setRegPassword] = useState<string | null>();
   async function getAxiosLogout() {

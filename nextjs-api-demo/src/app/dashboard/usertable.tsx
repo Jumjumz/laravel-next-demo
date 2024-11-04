@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 interface User {
   id: string;
   email: string;
-  password: string;
 }
 
 async function getAxiosUser(): Promise<User[] | undefined> {
