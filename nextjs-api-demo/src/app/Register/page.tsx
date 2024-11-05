@@ -3,6 +3,7 @@
 import api from "@/lib/api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "../stores/useAuthStore";
 
 interface Register {
   _id: string;
@@ -15,6 +16,7 @@ export default function Register() {
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const registerEmail = useAuthStore((state) => state.setEmail);
   const router = useRouter();
 
   async function postAxiosRegister(event: React.FormEvent) {
@@ -23,7 +25,7 @@ export default function Register() {
     try {
       await api.get("/sanctum/csrf-cookie", { withCredentials: true });
 
-      await api.post(
+      const response = await api.post(
         "/register",
         {
           email: email,
@@ -32,6 +34,7 @@ export default function Register() {
         { withCredentials: true }
       );
       setMessage("User Registered!");
+      registerEmail(response.data["email"]);
       router.push("/dashboard");
     } catch (err) {
       console.error("Post failed", err);
