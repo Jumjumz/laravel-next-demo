@@ -51,14 +51,21 @@ class UserController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $user = User::create([
+        User::create([
             'email' => $request->email,
             'password' => $request->password,
         ]);
 
-        return response()->json([
-            'message' => 'User registered', 
-        ], 201);
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(Auth::attempt($credentials)) {
+            $email = $credentials['email'];
+            
+            return response()->json(['message' => 'User registered', 'email' => $email ], 201);
+        }
 
     }
 
