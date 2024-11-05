@@ -1,6 +1,5 @@
 import UserTable from "./usertable";
 import Logout from "./logout";
-import { useSearchParams } from "next/navigation";
 
 export default function Dashboard() {
   return (
