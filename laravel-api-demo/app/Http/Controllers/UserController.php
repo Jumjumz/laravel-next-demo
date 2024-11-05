@@ -57,8 +57,7 @@ class UserController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'User registered',
-            'email'=> $user['email'], 
+            'message' => 'User registered', 
         ], 201);
 
     }
