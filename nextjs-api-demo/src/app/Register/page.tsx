@@ -3,7 +3,7 @@
 import api from "@/lib/api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "../stores/useAuthStore";
+import { useAuthPersist } from "../stores/useAuthStore";
 
 interface Register {
   _id: string;
@@ -16,7 +16,7 @@ export default function Register() {
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const registerEmail = useAuthStore((state) => state.setEmail);
+  const registerEmail = useAuthPersist((state) => state.setEmail);
   const router = useRouter();
 
   async function postAxiosRegister(event: React.FormEvent) {

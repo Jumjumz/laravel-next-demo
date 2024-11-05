@@ -3,7 +3,7 @@
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useAuthStore } from "../stores/useAuthStore";
+import { useAuthPersist } from "../stores/useAuthStore";
 
 interface User {
   email: string;
@@ -11,7 +11,7 @@ interface User {
 
 export default function Logout({ email }: User) {
   const [regEmail, setRegEmail] = useState<string | undefined>();
-  const clearEmail = useAuthStore((state) => state.clearEmail);
+  const clearEmail = useAuthPersist((state) => state.clearEmail);
   const router = useRouter();
 
   const logout = async () => {
