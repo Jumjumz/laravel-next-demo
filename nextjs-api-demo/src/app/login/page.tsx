@@ -3,7 +3,7 @@
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useAuthStore } from "../stores/useAuthStore";
+import { useAuthPersist } from "../stores/useAuthStore";
 
 interface Register {
   _id: string;
@@ -13,7 +13,7 @@ interface Register {
 
 export default function Login() {
   //const [register, setRegister] = useState({});
-  const loginEmail = useAuthStore((state) => state.setEmail);
+  const loginEmail = useAuthPersist((state) => state.setEmail);
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
