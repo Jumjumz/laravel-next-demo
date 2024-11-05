@@ -34,7 +34,7 @@ export default function Login() {
         { withCredentials: true }
       );
       setMessage("User Logged In");
-      loginEmail(email);
+      loginEmail(response.data["email"]);
       router.push("/dashboard");
       //router.push(`/dashboard/?email=${email}`);
     } catch (err) {
