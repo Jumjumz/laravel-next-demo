@@ -3,6 +3,7 @@
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAuthStore } from "../stores/useAuthStore";
 
 interface Register {
   _id: string;
@@ -12,6 +13,7 @@ interface Register {
 
 export default function Login() {
   //const [register, setRegister] = useState({});
+  const loginEmail = useAuthStore((state) => state.setEmail);
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +34,7 @@ export default function Login() {
         { withCredentials: true }
       );
       setMessage("User Logged In");
+      loginEmail(email);
       router.push("/dashboard");
       //router.push(`/dashboard/?email=${email}`);
     } catch (err) {
