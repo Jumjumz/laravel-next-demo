@@ -57,7 +57,7 @@ export function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody className=" text-white font-mono">
-          {table.getRowModel().rows!.length ? (
+          {(table.getRowModel()?.rows || []).length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
@@ -79,7 +79,7 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      <div className=" flex flex-row w-full h-16">
+      <div className=" flex flex-row w-full justify-end h-16 border-t-[1px]">
         <button
           onClick={() => table.previousPage()}
           className=" h-full w-36 text-white"
