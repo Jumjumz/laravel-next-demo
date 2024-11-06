@@ -1,12 +1,6 @@
 "use client";
 
 import api from "@/lib/api";
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
 
 import {
   Table,
@@ -18,7 +12,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useEffect, useState } from "react";
-
 interface User {
   id: string;
   email: string;
