@@ -5,6 +5,7 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
+  getPaginationRowModel,
 } from "@tanstack/react-table";
 
 import {
@@ -31,6 +32,7 @@ export function DataTable<TData, TValue>({
     data: dataTable,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
@@ -77,6 +79,20 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
+      <div className=" flex flex-row w-full h-16">
+        <button
+          onClick={() => table.previousPage()}
+          className=" h-full w-36 text-white"
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => table.nextPage()}
+          className=" h-full w-36 text-white"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
