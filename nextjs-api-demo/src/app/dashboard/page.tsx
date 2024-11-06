@@ -1,6 +1,5 @@
 import UserTable from "./usertable";
 import Logout from "./logout";
-import Header from "../components/email";
 import Email from "../components/email";
 
 export default function Dashboard() {

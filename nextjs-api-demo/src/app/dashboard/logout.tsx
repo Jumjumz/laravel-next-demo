@@ -15,7 +15,6 @@ export default function Logout() {
 
   const logout = async () => {
     try {
-      //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
       await api.post("/logout", { email: email }, { withCredentials: true });
       clearEmail();
       router.push("/login");
