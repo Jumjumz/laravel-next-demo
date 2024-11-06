@@ -3,9 +3,6 @@ import { ColumnDef } from "@tanstack/react-table";
 interface Users {
   id: string;
   email: string;
-  role: string;
-  status: string;
-  action: string;
 }
 
 export const columns: ColumnDef<Users>[] = [

@@ -1,3 +1,4 @@
+import { Users } from "lucide-react";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -6,12 +7,12 @@ interface AuthStore {
     email : string,
     setEmail : (email : string) => void;
 }
-
 interface AuthPersist {
     email : string,
     setEmail : (email : string) => void;
     clearEmail : () => void;
 }
+
 
 export const useAuthStore = create<AuthStore> ((set) => ({
     email: "",

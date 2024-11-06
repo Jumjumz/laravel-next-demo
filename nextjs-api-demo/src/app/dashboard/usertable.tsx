@@ -11,6 +11,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DataTable } from "./data-table";
+import { columns } from "./columns";
+
 import { useEffect, useState } from "react";
 interface User {
   id: string;
@@ -37,7 +40,7 @@ export default function UserTable() {
   }, []);
 
   return (
-    <Table className=" text-xl text-white font-mono border-[1px]">
+    /*<Table className=" text-xl text-white font-mono border-[1px]">
       <TableCaption>Dashboard User List</TableCaption>
       <TableHeader>
         <TableRow>
@@ -54,6 +57,7 @@ export default function UserTable() {
           </TableRow>
         ))}
       </TableBody>
-    </Table>
+    </Table>*/
+    <DataTable columns={columns} data={users!} />
   );
 }
