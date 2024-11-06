@@ -1,3 +1,8 @@
+"use client";
+
+import { useAuthPersist } from "../stores/useAuthStore";
+
 export default function Header() {
-  return <div></div>;
+  const email = useAuthPersist((state) => state.email);
+  return <div>{email}</div>;
 }
