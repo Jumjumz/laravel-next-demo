@@ -2,6 +2,13 @@
 
 import api from "@/lib/api";
 import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+
+import {
   Table,
   TableBody,
   TableCaption,
