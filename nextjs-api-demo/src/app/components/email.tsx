@@ -2,7 +2,7 @@
 
 import { useAuthPersist } from "../stores/useAuthStore";
 
-export default function Header() {
+export default function Email() {
   const email = useAuthPersist((state) => state.email);
   return (
     <div>
