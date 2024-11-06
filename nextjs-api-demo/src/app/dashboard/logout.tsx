@@ -9,25 +9,19 @@ interface User {
   email: string;
 }
 
-export default function Logout({ email }: User) {
-  const [regEmail, setRegEmail] = useState<string | undefined>();
+export default function Logout() {
+  const email = useAuthPersist((state) => state.email);
   const clearEmail = useAuthPersist((state) => state.clearEmail);
   const router = useRouter();
 
   const logout = async () => {
     try {
       //await api.get("/sanctum/csrf-cookie", { withCredentials: true });
-      await api.post(
-        "/logout",
-        { email: setRegEmail(email) },
-        { withCredentials: true }
-      );
+      await api.post("/logout", { email: email }, { withCredentials: true });
       clearEmail();
       router.push("/login");
-      return regEmail;
     } catch (err) {
       console.error("Fetch failed", err);
-      return undefined;
     }
   };
 
