@@ -39,25 +39,5 @@ export default function UserTable() {
     });
   }, []);
 
-  return (
-    /*<Table className=" text-xl text-white font-mono border-[1px]">
-      <TableCaption>Dashboard User List</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Action</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users?.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell>{user.email}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>*/
-    <DataTable columns={columns} data={users!} />
-  );
+  return <DataTable columns={columns} data={users!} />;
 }
