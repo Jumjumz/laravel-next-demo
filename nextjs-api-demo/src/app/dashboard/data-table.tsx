@@ -82,12 +82,14 @@ export function DataTable<TData, TValue>({
       <div className=" flex flex-row w-full justify-end h-16 border-t-[1px]">
         <button
           onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
           className=" h-full w-36 text-white"
         >
           Previous
         </button>
         <button
           onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
           className=" h-full w-36 text-white"
         >
           Next
