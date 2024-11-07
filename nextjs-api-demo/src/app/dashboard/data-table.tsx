@@ -27,7 +27,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const dataTable = useMemo(() => data, [data]);
+  const dataTable = useMemo(() => data ?? [], [data]);
   const table = useReactTable({
     data: dataTable,
     columns,
@@ -57,7 +57,7 @@ export function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody className=" text-white font-mono">
-          {(table.getRowModel()?.rows || []).length ? (
+          {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
@@ -73,7 +73,7 @@ export function DataTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                Loading.
               </TableCell>
             </TableRow>
           )}
