@@ -1,6 +1,12 @@
 import UserTable from "./usertable";
 import Logout from "./logout";
 import Email from "../components/email";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Dashboard Demo",
+};
 
 export default function Dashboard() {
   return (
