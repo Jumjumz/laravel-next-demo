@@ -21,7 +21,7 @@ export default function Delete({ id }: UserId) {
   }
 
   return (
-    <button onClick={deleteAxiosUser} className=" bg-red-600">
+    <button onClick={deleteAxiosUser} className=" bg-red-600 w-24 h-12">
       Delete
     </button>
   );

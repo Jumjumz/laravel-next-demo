@@ -1,4 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
+import Delete from "./delete";
+import { Users } from "lucide-react";
 
 interface Users {
   id: string;
@@ -19,7 +21,9 @@ export const columns: ColumnDef<Users>[] = [
     header: "Status",
   },
   {
-    accessorKey: "action",
     header: "Action",
+    cell: ({ row }) => {
+      <Delete id={row.original.id} />;
+    },
   },
 ];
