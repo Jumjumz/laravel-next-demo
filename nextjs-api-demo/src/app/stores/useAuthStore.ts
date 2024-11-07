@@ -1,4 +1,3 @@
-import { Users } from "lucide-react";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
