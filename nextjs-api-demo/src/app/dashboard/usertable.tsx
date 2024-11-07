@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 interface User {
   id: string;
   email: string;
-  delete: JSX.Element;
 }
 
 async function getAxiosUser(): Promise<User[] | undefined> {

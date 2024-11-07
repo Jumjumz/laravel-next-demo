@@ -23,7 +23,7 @@ export const columns: ColumnDef<Users>[] = [
   {
     header: "Action",
     cell: ({ row }) => {
-      <Delete id={row.original.id} />;
+      return <Delete id={row.original.id} />;
     },
   },
 ];
