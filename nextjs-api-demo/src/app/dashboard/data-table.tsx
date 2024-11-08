@@ -16,7 +16,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+
+import Delete from "./delete";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -34,6 +36,7 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
+  const [users, setUsers] = useState();
 
   return (
     <div className=" rounded-md border h-[640px] flex flex-col justify-between">
@@ -58,13 +61,16 @@ export function DataTable<TData, TValue>({
         </TableHeader>
         <TableBody className=" text-white font-mono">
           {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
+            table.getRowModel().rows?.map((row) => (
               <TableRow key={row.id} data-state={row.original}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
+                <TableCell>
+                  <Delete id={row.original.id} />
+                </TableCell>
               </TableRow>
             ))
           ) : (

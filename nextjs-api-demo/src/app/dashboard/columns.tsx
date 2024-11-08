@@ -20,9 +20,10 @@ export const columns: ColumnDef<Users>[] = [
     header: "Status",
   },
   {
+    accessorKey: "action",
     header: "Action",
-    cell: ({ row }) => {
+    /*cell: ({ row }) => {
       return <Delete id={row.original.id} />;
-    },
+    },*/
   },
 ];
