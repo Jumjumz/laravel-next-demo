@@ -20,15 +20,15 @@ import { useMemo, useState } from "react";
 
 import Delete from "./delete";
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+interface DataTableProps<Users, TValue> {
+  columns: ColumnDef<Users, TValue>[];
+  data: Users[];
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<Users, TValue>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<Users, TValue>) {
   const dataTable = useMemo(() => data ?? [], [data]);
   const table = useReactTable({
     data: dataTable,
@@ -36,7 +36,6 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
-  const [users, setUsers] = useState();
 
   return (
     <div className=" rounded-md border h-[640px] flex flex-col justify-between">
@@ -62,15 +61,12 @@ export function DataTable<TData, TValue>({
         <TableBody className=" text-white font-mono">
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows?.map((row) => (
-              <TableRow key={row.id} data-state={row.original}>
+              <TableRow key={row.id} data-state={row.id}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
-                <TableCell>
-                  <Delete id={row.original.id} />
-                </TableCell>
               </TableRow>
             ))
           ) : (
