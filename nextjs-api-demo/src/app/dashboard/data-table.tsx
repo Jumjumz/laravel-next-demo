@@ -6,6 +6,7 @@ import {
   getCoreRowModel,
   useReactTable,
   getPaginationRowModel,
+  getFilteredRowModel,
 } from "@tanstack/react-table";
 
 import {
@@ -16,26 +17,34 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import Delete from "./delete";
 
-interface DataTableProps<Users, TValue> {
-  columns: ColumnDef<Users, TValue>[];
-  data: Users[];
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
-export function DataTable<Users, TValue>({
+export function DataTable<TData, TValue>({
   columns,
   data,
-}: DataTableProps<Users, TValue>) {
+}: DataTableProps<TData, TValue>) {
   const dataTable = useMemo(() => data ?? [], [data]);
+  const [user, setUsers] = useState(dataTable);
   const table = useReactTable({
     data: dataTable,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
   });
+  const filterData = table.getFilteredRowModel().flatRows;
+  console.log(user);
+
+  useEffect(() => {
+    filterData.map((row) => row.original);
+  }, []);
 
   return (
     <div className=" rounded-md border h-[640px] flex flex-col justify-between">

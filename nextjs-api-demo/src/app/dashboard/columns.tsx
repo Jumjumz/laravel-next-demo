@@ -1,6 +1,5 @@
 import { ColumnDef, flattenBy } from "@tanstack/react-table";
 import Delete from "./delete";
-import { table } from "console";
 import { Checkbox } from "@radix-ui/react-checkbox";
 
 interface Users {
@@ -48,9 +47,9 @@ export const columns: ColumnDef<Users>[] = [
   {
     accessorKey: "action",
     header: "Action",
-    /*cell: ({ row }) => {
+    cell: ({ row }) => {
       return <Delete id={row.original.id} />;
-    },*/
+    },
     //cell: (info) => info.getValue(),
   },
 ];
