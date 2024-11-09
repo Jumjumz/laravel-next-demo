@@ -31,7 +31,7 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const dataTable = useMemo(() => data ?? [], [data]);
-  const [user, setUsers] = useState(dataTable);
+  const [user, setUsers] = useState(data);
   const table = useReactTable({
     data: dataTable,
     columns,
@@ -40,7 +40,7 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
   });
   const filterData = table.getFilteredRowModel().flatRows;
-  console.log(user);
+  console.log(dataTable);
 
   useEffect(() => {
     filterData.map((row) => row.original);
