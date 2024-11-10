@@ -74,7 +74,6 @@ export function DataTable<TData, TValue>() {
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
   });
-  const filterData = table.getFilteredRowModel().flatRows;
 
   return (
     <div className=" rounded-md border h-[640px] flex flex-col justify-between">

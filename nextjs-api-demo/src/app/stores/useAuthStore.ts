@@ -12,7 +12,6 @@ interface AuthPersist {
     clearEmail : () => void;
 }
 
-
 export const useAuthStore = create<AuthStore> ((set) => ({
     email: "",
     setEmail : (email : string) => set(() => ({ email })), 
