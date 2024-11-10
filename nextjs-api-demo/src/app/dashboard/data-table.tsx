@@ -19,17 +19,32 @@ import {
 } from "@/components/ui/table";
 import { useEffect, useMemo, useState } from "react";
 
+import api from "@/lib/api";
+
 import Delete from "./delete";
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+interface Users {
+  id: string;
+  email: string;
 }
 
-export function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
+interface DataTableProps<Users, TValue> {
+  columns: ColumnDef<Users, TValue>[];
+  data: Users[];
+}
+
+// fetch users in the backend
+async function getAxiosUser(): Promise<Users[] | undefined> {
+  try {
+    const response = await api.get("/users", { withCredentials: true });
+    return response.data;
+  } catch (err) {
+    console.error("Fetch failed", err);
+    return undefined;
+  }
+}
+
+export function DataTable<TData, TValue>() {
   const dataTable = useMemo(() => data ?? [], [data]);
   const [user, setUsers] = useState(data);
   const table = useReactTable({
