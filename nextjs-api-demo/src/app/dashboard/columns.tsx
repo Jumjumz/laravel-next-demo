@@ -45,11 +45,10 @@ export const columns: ColumnDef<Users>[] = [
     header: "Status",
   },
   {
+    id: "action",
     accessorKey: "action",
     header: "Action",
-    cell: ({ row }) => {
-      return <Delete id={row.original.id} />;
-    },
+    cell: (info) => info.getValue(),
     //cell: (info) => info.getValue(),
   },
 ];

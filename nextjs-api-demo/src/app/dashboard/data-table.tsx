@@ -49,12 +49,20 @@ export function DataTable<TData, TValue>() {
   const [user, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
 
-  useEffect(() => {
-    if (!destroy) {
-      getAxiosUser().then((response) => {
-        setUsers(response);
-      });
+  async function deleteAxiosUser(id: string) {
+    try {
+      await api.delete(`delete/${id}`);
+      setDestroy(true);
+      setUsers((tableState) => tableState?.filter((state) => state.id !== id));
+    } catch (err) {
+      console.error("Failed to delete", err);
     }
+  }
+
+  useEffect(() => {
+    getAxiosUser().then((response) => {
+      setUsers(response);
+    });
   }, []);
 
   const dataTable = useMemo(() => user ?? [], [user]);
@@ -67,7 +75,6 @@ export function DataTable<TData, TValue>() {
     getFilteredRowModel: getFilteredRowModel(),
   });
   const filterData = table.getFilteredRowModel().flatRows;
-  console.log(user);
 
   return (
     <div className=" rounded-md border h-[640px] flex flex-col justify-between">
@@ -99,8 +106,10 @@ export function DataTable<TData, TValue>() {
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
-                <TableCell>
-                  <button onClick={() => destroy}>Delete</button>
+                <TableCell headers="action">
+                  <button onClick={() => deleteAxiosUser(row.original.id)}>
+                    Delete
+                  </button>
                 </TableCell>
               </TableRow>
             ))
