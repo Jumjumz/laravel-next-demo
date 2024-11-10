@@ -64,7 +64,6 @@ export function DataTable<TData, TValue>() {
     getFilteredRowModel: getFilteredRowModel(),
   });
   const filterData = table.getFilteredRowModel().flatRows;
-  console.log(dataTable);
 
   return (
     <div className=" rounded-md border h-[640px] flex flex-col justify-between">
@@ -101,7 +100,7 @@ export function DataTable<TData, TValue>() {
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                Loading.
+                Loading...
               </TableCell>
             </TableRow>
           )}

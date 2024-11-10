@@ -12,22 +12,6 @@ interface User {
   email: string;
 }
 
-async function getAxiosUser(): Promise<User[] | undefined> {
-  try {
-    const response = await api.get("/users", { withCredentials: true });
-    return response.data;
-  } catch (err) {
-    console.error("Fetch failed", err);
-    return undefined;
-  }
-}
-
 export default function UserTable() {
   const [users, setUsers] = useState<User[] | undefined>();
-
-  useEffect(() => {
-    getAxiosUser().then((response) => {
-      setUsers(response);
-    });
-  }, []);
 }
