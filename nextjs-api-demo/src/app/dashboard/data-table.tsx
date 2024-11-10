@@ -20,6 +20,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import api from "@/lib/api";
+import { columns } from "./columns";
 
 import Delete from "./delete";
 
@@ -45,8 +46,16 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 }
 
 export function DataTable<TData, TValue>() {
-  const dataTable = useMemo(() => data ?? [], [data]);
-  const [user, setUsers] = useState(data);
+  const [user, setUsers] = useState<Users[] | undefined>();
+
+  useEffect(() => {
+    getAxiosUser().then((response) => {
+      setUsers(response);
+    });
+  }, []);
+
+  const dataTable = useMemo(() => user ?? [], [user]);
+
   const table = useReactTable({
     data: dataTable,
     columns,
@@ -56,10 +65,6 @@ export function DataTable<TData, TValue>() {
   });
   const filterData = table.getFilteredRowModel().flatRows;
   console.log(dataTable);
-
-  useEffect(() => {
-    filterData.map((row) => row.original);
-  }, []);
 
   return (
     <div className=" rounded-md border h-[640px] flex flex-col justify-between">

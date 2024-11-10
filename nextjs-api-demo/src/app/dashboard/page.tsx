@@ -2,6 +2,7 @@ import UserTable from "./usertable";
 import Logout from "./logout";
 import Email from "../components/email";
 import { Metadata } from "next";
+import { DataTable } from "./data-table";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -17,7 +18,7 @@ export default function Dashboard() {
           <Logout />
         </nav>
         <div className=" w-full">
-          <UserTable />
+          <DataTable />
         </div>
       </main>
     </div>

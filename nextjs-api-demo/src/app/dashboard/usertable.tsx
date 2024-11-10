@@ -30,6 +30,4 @@ export default function UserTable() {
       setUsers(response);
     });
   }, []);
-
-  return <DataTable columns={columns} data={users!} />;
 }
