@@ -49,6 +49,12 @@ export function DataTable<TData, TValue>() {
   const [user, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
 
+  useEffect(() => {
+    getAxiosUser().then((response) => {
+      setUsers(response);
+    });
+  }, []);
+
   async function deleteAxiosUser(id: string) {
     try {
       await api.delete(`delete/${id}`);
@@ -58,12 +64,6 @@ export function DataTable<TData, TValue>() {
       console.error("Failed to delete", err);
     }
   }
-
-  useEffect(() => {
-    getAxiosUser().then((response) => {
-      setUsers(response);
-    });
-  }, []);
 
   const dataTable = useMemo(() => user ?? [], [user]);
 
