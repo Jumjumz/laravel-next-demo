@@ -81,6 +81,12 @@ class UserController extends Controller
         return response()->json(['message' => 'User Deleted'], 200);
     }
 
+    public function update($id) {
+        $user = User::find(($id));
+
+        $user->update();
+    }
+
     public function logout() {
         Auth::guard('web')->logout();
 
