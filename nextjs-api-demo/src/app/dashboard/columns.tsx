@@ -1,4 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
+import Delete from "./delete";
+import { Checkbox } from "@radix-ui/react-checkbox";
 
 interface Users {
   id: string;
@@ -22,5 +24,6 @@ export const columns: ColumnDef<Users>[] = [
     id: "action",
     accessorKey: "action",
     header: "Action",
+    //cell: (info) => info.getValue(),
   },
 ];

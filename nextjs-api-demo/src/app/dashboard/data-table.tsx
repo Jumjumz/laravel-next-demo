@@ -26,26 +26,6 @@ interface Users {
   email: string;
 }
 
-export const columns: ColumnDef<Users>[] = [
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "role",
-    header: "Role",
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
-    id: "action",
-    accessorKey: "action",
-    header: "Action",
-  },
-];
-
 interface DataTableProps<Users, TValue> {
   columns: ColumnDef<Users, TValue>[];
   data: Users[];
@@ -63,8 +43,34 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 }
 
 export function DataTable<TData, TValue>() {
-  const [user, setUsers] = useState<Users[] | undefined>();
+  const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
+
+  const columns: ColumnDef<Users>[] = [
+    {
+      accessorKey: "email",
+      header: "Email",
+    },
+    {
+      accessorKey: "role",
+      header: "Role",
+    },
+    {
+      accessorKey: "status",
+      header: "Status",
+    },
+    {
+      accessorKey: "action",
+      header: "Action",
+      cell: ({ row }) => {
+        return (
+          <button onClick={() => deleteAxiosUser(row.original.id)}>
+            Delete
+          </button>
+        );
+      },
+    },
+  ];
 
   useEffect(() => {
     getAxiosUser().then((response) => {
@@ -72,7 +78,7 @@ export function DataTable<TData, TValue>() {
     });
   }, []);
 
-  const dataTable = useMemo(() => user ?? [], [user]);
+  const dataTable = useMemo(() => users ?? [], [users]);
 
   async function deleteAxiosUser(id: string) {
     try {
@@ -122,11 +128,6 @@ export function DataTable<TData, TValue>() {
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
-                <TableCell>
-                  <button onClick={() => deleteAxiosUser(row.original.id)}>
-                    Delete
-                  </button>
-                </TableCell>
               </TableRow>
             ))
           ) : (
