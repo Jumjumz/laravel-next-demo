@@ -20,14 +20,31 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import api from "@/lib/api";
-import { columns } from "./columns";
-
-import Delete from "./delete";
 
 interface Users {
   id: string;
   email: string;
 }
+
+export const columns: ColumnDef<Users>[] = [
+  {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
+    accessorKey: "role",
+    header: "Role",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    id: "action",
+    accessorKey: "action",
+    header: "Action",
+  },
+];
 
 interface DataTableProps<Users, TValue> {
   columns: ColumnDef<Users, TValue>[];
@@ -55,6 +72,8 @@ export function DataTable<TData, TValue>() {
     });
   }, []);
 
+  const dataTable = useMemo(() => user ?? [], [user]);
+
   async function deleteAxiosUser(id: string) {
     try {
       await api.delete(`delete/${id}`);
@@ -64,8 +83,6 @@ export function DataTable<TData, TValue>() {
       console.error("Failed to delete", err);
     }
   }
-
-  const dataTable = useMemo(() => user ?? [], [user]);
 
   const table = useReactTable({
     data: dataTable,
