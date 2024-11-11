@@ -64,7 +64,10 @@ export function DataTable<TData, TValue>() {
       header: "Action",
       cell: ({ row }) => {
         return (
-          <button onClick={() => deleteAxiosUser(row.original.id)}>
+          <button
+            onClick={() => deleteAxiosUser(row.original.id)}
+            className=" bg-red-700 w-24 h-full rounded-md"
+          >
             Delete
           </button>
         );
