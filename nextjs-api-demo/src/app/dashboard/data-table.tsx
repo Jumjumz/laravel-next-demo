@@ -56,7 +56,7 @@ export function DataTable<TUsers, TValue>() {
     },
     {
       accessorKey: "action",
-      header: "Action",
+      header: "Actions",
       cell: ({ row }) => {
         return (
           <button
