@@ -14,7 +14,9 @@ interface AuthPersist {
 
 interface AuthPut {
     id: string,
+    email: string,
     setId: (id: string) => void;
+    setEmail: (email: string) => void;
 }
 
 export const useAuthStore = create<AuthStore> ((set) => ({
@@ -24,7 +26,9 @@ export const useAuthStore = create<AuthStore> ((set) => ({
 
 export const useAuthPut = create<AuthPut> ((set) => ({
     id : "",
+    email : "",
     setId : (id: string) => set(() => ({ id })),
+    setEmail : (email: string) => set(() => ({ email })),
 }));
 
 export const useAuthPersist = create<AuthPersist>()(
