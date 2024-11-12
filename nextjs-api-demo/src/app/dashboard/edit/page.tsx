@@ -25,7 +25,7 @@ export default function Edit() {
     try {
       const response = await api.put(
         `update/${userId}`,
-        { email: "jumzfromEdit@gmail.com" },
+        { email: "jumzGOAT@gmail.com" },
         { withCredentials: true }
       );
       router.push("/dashboard");
