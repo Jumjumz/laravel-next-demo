@@ -80,6 +80,19 @@ export function DataTable<TUsers, TValue>() {
     }
   }
 
+  async function editAxiosUser({ id, email }: Users) {
+    try {
+      const response = await api.put(
+        `update/${id}`,
+        { email },
+        { withCredentials: true }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Failed to update");
+    }
+  }
+
   useEffect(() => {
     if (!destroy) {
       getAxiosUser().then((response) => {
