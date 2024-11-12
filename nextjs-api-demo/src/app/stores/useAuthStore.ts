@@ -12,9 +12,19 @@ interface AuthPersist {
     clearEmail : () => void;
 }
 
+interface AuthPut {
+    id: string,
+    setId: (id: string) => void;
+}
+
 export const useAuthStore = create<AuthStore> ((set) => ({
-    email: "",
+    email : "",
     setEmail : (email : string) => set(() => ({ email })), 
+}));
+
+export const useAuthPut = create<AuthPut> ((set) => ({
+    id : "",
+    setId : (id: string) => set(() => ({ id })),
 }));
 
 export const useAuthPersist = create<AuthPersist>()(

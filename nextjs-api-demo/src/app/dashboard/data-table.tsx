@@ -44,6 +44,8 @@ export function DataTable<TUsers, TValue>() {
   const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
 
+  const router = useRouter();
+
   const columns: ColumnDef<Users>[] = [
     {
       accessorKey: "email",
@@ -71,7 +73,7 @@ export function DataTable<TUsers, TValue>() {
             </button>
             <button
               onClick={() => editUser(row.original.id)}
-              className=" bg-green-600 w-24 h-full rounded-md text-center"
+              className=" bg-green-600 w-24 h-full rounded-md"
             >
               Edit
             </button>
@@ -92,7 +94,6 @@ export function DataTable<TUsers, TValue>() {
   }
 
   function editUser(id: string) {
-    const router = useRouter();
     router.push("/dashboard/edit");
   }
 
