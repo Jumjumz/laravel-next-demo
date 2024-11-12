@@ -26,11 +26,6 @@ interface Users {
   email: string;
 }
 
-interface DataTableProps<Users, TValue> {
-  columns: ColumnDef<Users, TValue>[];
-  data: Users[];
-}
-
 // fetch users in the backend
 async function getAxiosUser(): Promise<Users[] | undefined> {
   try {
@@ -42,7 +37,7 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
   }
 }
 
-export function DataTable<TData, TValue>() {
+export function DataTable<TUsers, TValue>() {
   const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
 
