@@ -76,22 +76,11 @@ async function deleteAxiosUser(id: string) {
 
 export function DataTable<TUsers, TValue>() {
   const [users, setUsers] = useState<Users[] | undefined>();
-  const [destroy, setDestroy] = useState(false);
+  const [destroy, setDestroy] = useState(true);
 
   useEffect(() => {
-    if (!destroy) {
-      getAxiosUser().then((response) => {
-        setUsers(response);
-      });
-    }
-    users?.forEach((user) => {
-      const id = user.id;
-      deleteAxiosUser(id).then(() => {
-        setDestroy(true);
-        setUsers((tableState) =>
-          tableState?.filter((state) => state.id !== id)
-        );
-      });
+    getAxiosUser().then((response) => {
+      setUsers(response);
     });
   }, []);
 
