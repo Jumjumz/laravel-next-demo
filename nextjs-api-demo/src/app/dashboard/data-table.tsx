@@ -26,6 +26,35 @@ interface Users {
   email: string;
 }
 
+const columns: ColumnDef<Users>[] = [
+  {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
+    accessorKey: "role",
+    header: "Role",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    accessorKey: "action",
+    header: "Action",
+    cell: ({ row }) => {
+      return (
+        <button
+          onClick={() => deleteAxiosUser(row.original.id)}
+          className=" bg-red-700 w-24 h-full rounded-md"
+        >
+          Delete
+        </button>
+      );
+    },
+  },
+];
+
 // fetch users in the backend
 async function getAxiosUser(): Promise<Users[] | undefined> {
   try {
@@ -37,38 +66,17 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
   }
 }
 
+async function deleteAxiosUser(id: string) {
+  try {
+    await api.delete(`delete/${id}`);
+  } catch (err) {
+    console.error("Failed to delete", err);
+  }
+}
+
 export function DataTable<TUsers, TValue>() {
   const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
-
-  const columns: ColumnDef<Users>[] = [
-    {
-      accessorKey: "email",
-      header: "Email",
-    },
-    {
-      accessorKey: "role",
-      header: "Role",
-    },
-    {
-      accessorKey: "status",
-      header: "Status",
-    },
-    {
-      accessorKey: "action",
-      header: "Action",
-      cell: ({ row }) => {
-        return (
-          <button
-            onClick={() => deleteAxiosUser(row.original.id)}
-            className=" bg-red-700 w-24 h-full rounded-md"
-          >
-            Delete
-          </button>
-        );
-      },
-    },
-  ];
 
   useEffect(() => {
     if (!destroy) {
@@ -76,19 +84,18 @@ export function DataTable<TUsers, TValue>() {
         setUsers(response);
       });
     }
+    users?.forEach((user) => {
+      const id = user.id;
+      deleteAxiosUser(id).then(() => {
+        setDestroy(true);
+        setUsers((tableState) =>
+          tableState?.filter((state) => state.id !== id)
+        );
+      });
+    });
   }, []);
 
   const dataTable = useMemo(() => users ?? [], [users]);
-
-  async function deleteAxiosUser(id: string) {
-    try {
-      await api.delete(`delete/${id}`);
-      setDestroy(true);
-      setUsers((tableState) => tableState?.filter((state) => state.id !== id));
-    } catch (err) {
-      console.error("Failed to delete", err);
-    }
-  }
 
   const table = useReactTable({
     data: dataTable,
