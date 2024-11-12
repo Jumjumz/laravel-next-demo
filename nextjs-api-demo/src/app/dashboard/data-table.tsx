@@ -81,9 +81,11 @@ export function DataTable<TUsers, TValue>() {
   }
 
   useEffect(() => {
-    getAxiosUser().then((response) => {
-      setUsers(response);
-    });
+    if (!destroy) {
+      getAxiosUser().then((response) => {
+        setUsers(response);
+      });
+    }
   }, []);
 
   const dataTable = useMemo(() => users ?? [], [users]);
