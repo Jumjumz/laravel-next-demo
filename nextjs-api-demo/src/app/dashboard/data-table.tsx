@@ -20,6 +20,8 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import api from "@/lib/api";
+import { Link } from "lucide-react";
+import Edit from "./edit/page";
 
 interface Users {
   id: string;
@@ -59,12 +61,17 @@ export function DataTable<TUsers, TValue>() {
       header: "Actions",
       cell: ({ row }) => {
         return (
-          <button
-            onClick={() => deleteAxiosUser(row.original.id)}
-            className=" bg-red-700 w-24 h-full rounded-md"
-          >
-            Delete
-          </button>
+          <div className=" w-full h-auto flex flex-row gap-4">
+            <button
+              onClick={() => deleteAxiosUser(row.original.id)}
+              className=" bg-red-700 w-24 h-full rounded-md"
+            >
+              Delete
+            </button>
+            <button className=" bg-green-600 w-24 h-full rounded-md">
+              Edit
+            </button>
+          </div>
         );
       },
     },
