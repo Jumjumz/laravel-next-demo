@@ -1,11 +1,31 @@
+import api from "@/lib/api";
+
 import Logout from "../logout";
 import Email from "@/app/components/email";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Dashboard Demo",
+  title: "Edit User",
+  description: "Edit User",
 };
+
+interface Users {
+  id: string;
+  email: string;
+}
+
+async function editAxiosUser({ id, email }: Users) {
+  try {
+    const response = await api.put(
+      `update/${id}`,
+      { email },
+      { withCredentials: true }
+    );
+    return response.data;
+  } catch (err) {
+    console.error("Failed to update");
+  }
+}
 
 export default function Dashboard() {
   return (
