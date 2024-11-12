@@ -22,6 +22,7 @@ import { useEffect, useMemo, useState } from "react";
 import api from "@/lib/api";
 import Link from "next/link";
 import Edit from "./edit/page";
+import { useRouter } from "next/navigation";
 
 interface Users {
   id: string;
@@ -68,12 +69,12 @@ export function DataTable<TUsers, TValue>() {
             >
               Delete
             </button>
-            <Link
-              href="/dashboard/edit"
+            <button
+              onClick={() => editUser(row.original.id)}
               className=" bg-green-600 w-24 h-full rounded-md text-center"
             >
               Edit
-            </Link>
+            </button>
           </div>
         );
       },
@@ -88,6 +89,11 @@ export function DataTable<TUsers, TValue>() {
     } catch (err) {
       console.error("Failed to delete", err);
     }
+  }
+
+  function editUser(id: string) {
+    const router = useRouter();
+    router.push("/dashboard/edit");
   }
 
   useEffect(() => {
