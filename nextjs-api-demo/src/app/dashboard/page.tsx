@@ -1,4 +1,3 @@
-import UserTable from "./usertable";
 import Logout from "./logout";
 import Email from "../components/email";
 import { Metadata } from "next";

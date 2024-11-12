@@ -20,7 +20,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import api from "@/lib/api";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import Edit from "./edit/page";
 
 interface Users {
@@ -68,9 +68,12 @@ export function DataTable<TUsers, TValue>() {
             >
               Delete
             </button>
-            <button className=" bg-green-600 w-24 h-full rounded-md">
+            <Link
+              href="/dashboard/edit"
+              className=" bg-green-600 w-24 h-full rounded-md text-center"
+            >
               Edit
-            </button>
+            </Link>
           </div>
         );
       },

@@ -2,7 +2,9 @@ import api from "@/lib/api";
 
 import Logout from "../logout";
 import Email from "@/app/components/email";
+
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Edit User",
@@ -35,7 +37,14 @@ export default function Edit() {
           <Email />
           <Logout />
         </nav>
-        <div className=" w-full"></div>
+        <div className=" w-full">
+          <Link
+            href="/dashboard"
+            className=" w-24 h-8 bg-white text-black text-center"
+          >
+            Back
+          </Link>
+        </div>
       </main>
     </div>
   );
