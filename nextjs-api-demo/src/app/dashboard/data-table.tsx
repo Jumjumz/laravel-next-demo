@@ -47,6 +47,7 @@ export function DataTable<TUsers, TValue>() {
 
   const router = useRouter();
   const setId = useAuthPut((set) => set.setId);
+  const setEmail = useAuthPut((set) => set.setEmail);
 
   const columns: ColumnDef<Users>[] = [
     {
@@ -74,7 +75,7 @@ export function DataTable<TUsers, TValue>() {
               Delete
             </button>
             <button
-              onClick={() => editUser(row.original.id)}
+              onClick={() => editUser(row.original.id, row.original.email)}
               className=" bg-green-600 w-24 h-full rounded-md"
             >
               Edit
@@ -95,8 +96,9 @@ export function DataTable<TUsers, TValue>() {
     }
   }
 
-  function editUser(id: string) {
+  function editUser(id: string, email: string) {
     setId(id);
+    setEmail(email);
     router.push("/dashboard/edit");
   }
 
