@@ -23,6 +23,7 @@ import api from "@/lib/api";
 import Link from "next/link";
 import Edit from "./edit/page";
 import { useRouter } from "next/navigation";
+import { useAuthPut } from "../stores/useAuthStore";
 
 interface Users {
   id: string;
@@ -45,6 +46,7 @@ export function DataTable<TUsers, TValue>() {
   const [destroy, setDestroy] = useState(false);
 
   const router = useRouter();
+  const setId = useAuthPut((set) => set.setId);
 
   const columns: ColumnDef<Users>[] = [
     {
@@ -94,6 +96,7 @@ export function DataTable<TUsers, TValue>() {
   }
 
   function editUser(id: string) {
+    setId(id);
     router.push("/dashboard/edit");
   }
 
