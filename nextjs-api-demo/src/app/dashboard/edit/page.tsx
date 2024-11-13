@@ -5,7 +5,6 @@ import api from "@/lib/api";
 import Logout from "../logout";
 import Email from "@/app/components/email";
 
-import { Metadata } from "next";
 import Link from "next/link";
 import { useAuthPut } from "@/app/stores/useAuthStore";
 import { useRouter } from "next/navigation";
