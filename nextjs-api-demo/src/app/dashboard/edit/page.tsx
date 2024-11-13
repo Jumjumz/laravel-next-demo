@@ -23,6 +23,7 @@ export default function Edit() {
   const router = useRouter();
 
   async function editAxiosUser(event: React.FormEvent) {
+    event.preventDefault();
     try {
       const response = await api.put(
         `update/${userId}`,
@@ -46,7 +47,13 @@ export default function Edit() {
         <div className=" w-full">
           <h2 className=" text-white">{userEmail}</h2>
           <form method="PUT">
-            <input className=" w-56 h-8" type="email" placeholder={userEmail} />
+            <input
+              className=" w-56 h-8"
+              type="email"
+              placeholder={userEmail}
+              value={editEmail}
+              onChange={(e) => setEditEmail(e.target.value)}
+            />
           </form>
           <Link
             href="/dashboard"
