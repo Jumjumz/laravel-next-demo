@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import Email from "../components/email";
 
 
 interface AuthStore {
@@ -24,14 +25,22 @@ export const useAuthStore = create<AuthStore> ((set) => ({
     setEmail : (email : string) => set(() => ({ email })), 
 }));
 
-export const useAuthUpdate = create<AuthUpdate> ((set) => ({
-    id : "",
-    email : "",
-    setId : (id: string) => set(() => ({ id })),
-    setEmail : (email: string) => set(() => ({ email })),
-}));
+export const useAuthUpdate = create<AuthUpdate> ()(
+    persist(
+        (set) => ({
+            id: "",
+            email: "",
+            setId : (id : string) => set(() => ({ id })),
+            setEmail : (email: string) => set(() => ({ email })),
+        }),
+        {
+            name: 'auth-update',
+            storage: createJSONStorage(() => sessionStorage),
+        }
+    ),
+);
 
-export const useAuthPersist = create<AuthPersist>()(
+export const useAuthPersist = create<AuthPersist> ()(
     persist(
         (set) => ({
             email: "",
@@ -43,4 +52,4 @@ export const useAuthPersist = create<AuthPersist>()(
             storage: createJSONStorage(() => localStorage), // syntax for storing to localstorage
         }
     ),
-)
+);
