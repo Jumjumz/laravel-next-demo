@@ -46,7 +46,7 @@ export default function Edit() {
         </nav>
         <div className=" w-full">
           <h2 className=" text-white">{userEmail}</h2>
-          <form method="PUT">
+          <form method="PUT" onSubmit={editAxiosUser}>
             <input
               className=" w-56 h-8"
               type="email"
@@ -54,6 +54,9 @@ export default function Edit() {
               value={editEmail}
               onChange={(e) => setEditEmail(e.target.value)}
             />
+            <button type="submit" className=" w-24 bg-blue-700">
+              Edit
+            </button>
           </form>
           <Link
             href="/dashboard"
@@ -61,9 +64,6 @@ export default function Edit() {
           >
             Back
           </Link>
-          <button onClick={editAxiosUser} className=" w-24 bg-blue-700">
-            Edit
-          </button>
         </div>
       </main>
     </div>
