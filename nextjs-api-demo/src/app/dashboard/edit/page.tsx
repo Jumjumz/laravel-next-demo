@@ -8,6 +8,7 @@ import Email from "@/app/components/email";
 import Link from "next/link";
 import { useAuthUpdate } from "@/app/stores/useAuthStore";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface Users {
   id: string;
@@ -17,14 +18,15 @@ interface Users {
 export default function Edit() {
   const userId = useAuthUpdate((set) => set.id);
   const userEmail = useAuthUpdate((set) => set.email);
+  const [editEmail, setEditEmail] = useState("");
 
   const router = useRouter();
 
-  async function editAxiosUser() {
+  async function editAxiosUser(event: React.FormEvent) {
     try {
       const response = await api.put(
         `update/${userId}`,
-        { email: "jumzGOAT@gmail.com" },
+        { email: editEmail },
         { withCredentials: true }
       );
       router.push("/dashboard");
@@ -42,8 +44,10 @@ export default function Edit() {
           <Logout />
         </nav>
         <div className=" w-full">
-          <h2 className="text-white">{userId}</h2>
           <h2 className=" text-white">{userEmail}</h2>
+          <form method="PUT">
+            <input className=" w-56 h-8" type="email" placeholder={userEmail} />
+          </form>
           <Link
             href="/dashboard"
             className=" w-24 h-8 bg-white text-black text-center"
