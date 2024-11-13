@@ -44,25 +44,23 @@ export default function Edit() {
           <Email />
           <Logout />
         </nav>
-        <div className=" w-full">
+        <div className=" flex flex-col w-full gap-4">
           <form
             method="PUT"
             onSubmit={editAxiosUser}
-            className="flex flex-col flex-wrap w-full gap-4 place-content-center"
+            className="flex flex-col w-56 gap-4 self-center"
           >
-            <div className=" w-56 h-auto flex flex-col gap-4">
-              <h2 className=" text-white">{userEmail}</h2>
-              <input
-                className=" w-56 h-8"
-                type="email"
-                placeholder={userEmail}
-                value={editEmail}
-                onChange={(e) => setEditEmail(e.target.value)}
-              />
-              <button type="submit" className=" w-24 bg-blue-700 self-center">
-                Edit
-              </button>
-            </div>
+            <h2 className=" text-white self-center">{userEmail}</h2>
+            <input
+              className=" w-full h-8"
+              type="email"
+              placeholder={userEmail}
+              value={editEmail}
+              onChange={(e) => setEditEmail(e.target.value)}
+            />
+            <button type="submit" className=" w-24 bg-blue-700 self-center">
+              Edit
+            </button>
           </form>
           <Link href="/dashboard">
             <button className=" w-24 h-8 bg-white text-black">Back</button>
