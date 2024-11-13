@@ -6,7 +6,7 @@ import Logout from "../logout";
 import Email from "@/app/components/email";
 
 import Link from "next/link";
-import { useAuthPut } from "@/app/stores/useAuthStore";
+import { useAuthUpdate } from "@/app/stores/useAuthStore";
 import { useRouter } from "next/navigation";
 
 interface Users {
@@ -15,8 +15,8 @@ interface Users {
 }
 
 export default function Edit() {
-  const userId = useAuthPut((set) => set.id);
-  const userEmail = useAuthPut((set) => set.email);
+  const userId = useAuthUpdate((set) => set.id);
+  const userEmail = useAuthUpdate((set) => set.email);
 
   const router = useRouter();
 
