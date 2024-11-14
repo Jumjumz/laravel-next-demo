@@ -55,8 +55,21 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ]);
+        
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $email = $credentials['email'];
             
-        return response()->json(['message' => 'User registered'], 201);
+            return response()->json(['message' => 'User registered', 'email' => $email], 201);
+        }
+        
+        throw ValidationException::withMessages([
+            'email' => __('Invalid Credentials'),
+        ]);
 
     }
 

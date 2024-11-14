@@ -35,7 +35,7 @@ export default function Register() {
       );
       setMessage("User Registered!");
       registerEmail(response.data["email"]);
-      router.push("/login");
+      router.push("/dashboard");
     } catch (err) {
       console.error("Post failed", err);
       setMessage("Failed to Register");
