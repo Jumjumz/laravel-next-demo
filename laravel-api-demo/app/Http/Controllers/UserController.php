@@ -97,8 +97,11 @@ class UserController extends Controller
         return response()->json(['message' => 'Update Success','user' => $user], 200);
     }
 
-    public function logout() {
+    public function logout(Request $request) {
         Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return response()->json(['message' => 'Logged Out']);
     }
