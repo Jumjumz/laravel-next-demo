@@ -7,6 +7,9 @@ export default async function Home() {
         <Link href="/login">
           <button className=" w-24 h-8 bg-white text-black">Login</button>
         </Link>
+        <link href="/register">
+          <button className=" w-24 h-8 bg-white text-black">Register</button>
+        </link>
       </main>
     </div>
   );
