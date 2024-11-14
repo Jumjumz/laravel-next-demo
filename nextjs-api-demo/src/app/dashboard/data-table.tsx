@@ -20,8 +20,6 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import api from "@/lib/api";
-import Link from "next/link";
-import Edit from "./edit/page";
 import { useRouter } from "next/navigation";
 import { useAuthUpdate } from "../stores/useAuthStore";
 
