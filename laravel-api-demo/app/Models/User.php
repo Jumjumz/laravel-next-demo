@@ -24,9 +24,11 @@ class User extends Authenticatable
     protected $connection = 'mongodb';
     protected $collection = 'users';
     protected $fillable = [
-        //'name',
+        'fullname',
+        'username',
         'email',
         'password',
+        'role',
     ];
 
     /**
