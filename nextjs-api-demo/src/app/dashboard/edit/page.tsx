@@ -30,6 +30,8 @@ export default function Edit() {
       const response = await api.put(
         `update/${userId}`,
         {
+          name: name,
+          username: userName,
           email: editEmail,
         },
         { withCredentials: true }
@@ -55,6 +57,20 @@ export default function Edit() {
             className="flex flex-col w-56 gap-4 self-center"
           >
             <h2 className=" text-white self-center">{userEmail}</h2>
+            <input
+              className=" w-full h-8"
+              type="text"
+              placeholder={name}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              className=" w-full h-8"
+              type="text"
+              placeholder={userName}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
             <input
               className=" w-full h-8"
               type="email"

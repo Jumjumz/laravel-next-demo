@@ -16,8 +16,12 @@ interface AuthPersist {
 interface AuthUpdate {
     id: string,
     email: string,
+    name: string,
+    userName: string,
     setId: (id: string) => void;
     setEmail: (email: string) => void;
+    setName: (name: string) => void;
+    setUserName: (userName: string) => void;
 }
 
 export const useAuthStore = create<AuthStore> ((set) => ({
@@ -30,8 +34,12 @@ export const useAuthUpdate = create<AuthUpdate> ()(
         (set) => ({
             id: "",
             email: "",
+            name: "",
+            userName: "",
             setId : (id : string) => set(() => ({ id })),
             setEmail : (email: string) => set(() => ({ email })),
+            setName: (name : string) => set(() => ({ name })),
+            setUserName : (userName : string) => set(() => ({ userName })),
         }),
         {
             name: 'auth-update',
