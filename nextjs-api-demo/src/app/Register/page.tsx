@@ -57,7 +57,15 @@ export default function Register() {
             method="POST"
             className="flex flex-row flex-wrap w-full gap-4 justify-center"
           >
-            <h2 className="w-full text-center text-white">Register a User</h2>
+            <h2 className="w-full text-center text-white">Register</h2>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Fullname"
+              required
+              className="w-full h-8"
+            />
             <input
               type="email"
               value={email}
