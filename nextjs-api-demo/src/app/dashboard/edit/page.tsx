@@ -19,6 +19,8 @@ export default function Edit() {
   const userId = useAuthUpdate((set) => set.id);
   const userEmail = useAuthUpdate((set) => set.email);
   const [editEmail, setEditEmail] = useState("");
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
 
   const router = useRouter();
 
@@ -27,7 +29,9 @@ export default function Edit() {
     try {
       const response = await api.put(
         `update/${userId}`,
-        { email: editEmail },
+        {
+          email: editEmail,
+        },
         { withCredentials: true }
       );
       router.push("/dashboard");
