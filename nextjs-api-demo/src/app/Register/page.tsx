@@ -67,6 +67,14 @@ export default function Register() {
               className="w-full h-8"
             />
             <input
+              type="text"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Username"
+              required
+              className="w-full h-8"
+            />
+            <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
