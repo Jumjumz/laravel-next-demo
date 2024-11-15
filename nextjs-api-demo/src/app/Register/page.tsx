@@ -13,9 +13,12 @@ interface Register {
 
 export default function Register() {
   //const [register, setRegister] = useState({});
+  const ROLE: string = "Admin";
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const registerEmail = useAuthPersist((state) => state.setEmail);
   const router = useRouter();
 
@@ -28,8 +31,11 @@ export default function Register() {
       const response = await api.post(
         "/register",
         {
+          name: name,
+          userName: userName,
           email: email,
           password: password,
+          role: ROLE,
         },
         { withCredentials: true }
       );
