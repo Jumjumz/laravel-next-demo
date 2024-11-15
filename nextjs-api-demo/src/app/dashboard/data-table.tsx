@@ -49,6 +49,14 @@ export function DataTable<TUsers, TValue>() {
 
   const columns: ColumnDef<Users>[] = [
     {
+      accessorKey: "name",
+      header: "Name",
+    },
+    {
+      accessorKey: "username",
+      header: "Username",
+    },
+    {
       accessorKey: "email",
       header: "Email",
     },
