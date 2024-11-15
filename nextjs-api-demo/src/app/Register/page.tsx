@@ -32,7 +32,7 @@ export default function Register() {
         "/register",
         {
           name: name,
-          userName: userName,
+          username: userName,
           email: email,
           password: password,
           role: ROLE,
