@@ -17,7 +17,7 @@ interface AuthUpdate {
     id: string,
     email: string,
     name: string,
-    userName: string,
+    username: string,
     setId: (id: string) => void;
     setEmail: (email: string) => void;
     setName: (name: string) => void;
@@ -35,11 +35,11 @@ export const useAuthUpdate = create<AuthUpdate> ()(
             id: "",
             email: "",
             name: "",
-            userName: "",
+            username: "",
             setId : (id : string) => set(() => ({ id })),
             setEmail : (email: string) => set(() => ({ email })),
             setName: (name : string) => set(() => ({ name })),
-            setUserName : (userName : string) => set(() => ({ userName })),
+            setUserName : (username : string) => set(() => ({ username })),
         }),
         {
             name: 'auth-update',
