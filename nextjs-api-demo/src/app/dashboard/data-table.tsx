@@ -26,6 +26,8 @@ import { useAuthUpdate } from "../stores/useAuthStore";
 interface Users {
   id: string;
   email: string;
+  name: string;
+  userName: string;
 }
 
 // fetch users in the backend
@@ -46,6 +48,8 @@ export function DataTable<TUsers, TValue>() {
   const router = useRouter();
   const setId = useAuthUpdate((set) => set.setId);
   const setEmail = useAuthUpdate((set) => set.setEmail);
+  const setName = useAuthUpdate((set) => set.setName);
+  const setUserName = useAuthUpdate((set) => set.setUserName);
 
   const columns: ColumnDef<Users>[] = [
     {
@@ -81,7 +85,14 @@ export function DataTable<TUsers, TValue>() {
               Delete
             </button>
             <button
-              onClick={() => editUser(row.original.id, row.original.email)}
+              onClick={() =>
+                editUser(
+                  row.original.id,
+                  row.original.email,
+                  row.original.name,
+                  row.original.userName
+                )
+              }
               className=" bg-green-600 w-24 h-full rounded-md"
             >
               Edit
@@ -102,9 +113,11 @@ export function DataTable<TUsers, TValue>() {
     }
   }
 
-  function editUser(id: string, email: string) {
+  function editUser(id: string, email: string, name: string, userName: string) {
     setId(id);
     setEmail(email);
+    setName(name);
+    setUserName(userName);
     router.push("/dashboard/edit");
   }
 
