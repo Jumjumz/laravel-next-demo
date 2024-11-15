@@ -27,7 +27,7 @@ interface Users {
   id: string;
   email: string;
   name: string;
-  userName: string;
+  username: string;
 }
 
 // fetch users in the backend
@@ -90,7 +90,7 @@ export function DataTable<TUsers, TValue>() {
                   row.original.id,
                   row.original.email,
                   row.original.name,
-                  row.original.userName
+                  row.original.username
                 )
               }
               className=" bg-green-600 w-24 h-full rounded-md"
