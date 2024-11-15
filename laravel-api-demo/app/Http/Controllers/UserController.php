@@ -52,8 +52,11 @@ class UserController extends Controller
         }
 
         User::create([
+            'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password,
+            'role' => $request->role,
         ]);
         
         $credentials = $request->validate([
