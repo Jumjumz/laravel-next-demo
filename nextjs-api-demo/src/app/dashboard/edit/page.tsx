@@ -18,9 +18,11 @@ interface Users {
 export default function Edit() {
   const userId = useAuthUpdate((set) => set.id);
   const userEmail = useAuthUpdate((set) => set.email);
+  const name = useAuthUpdate((set) => set.name);
+  const userName = useAuthUpdate((set) => set.userName);
   const [editEmail, setEditEmail] = useState("");
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
+  const [editName, setEditName] = useState("");
+  const [editUserName, setEditUserName] = useState("");
 
   const router = useRouter();
 
@@ -30,8 +32,8 @@ export default function Edit() {
       const response = await api.put(
         `update/${userId}`,
         {
-          name: name,
-          username: userName,
+          name: editName,
+          username: editUserName,
           email: editEmail,
         },
         { withCredentials: true }
@@ -44,7 +46,7 @@ export default function Edit() {
   }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-editName:var(--font-geist-sans)] bg-black">
       <main className="flex flex-col gap-8 row-start-2 items-center w-full sm:items-start">
         <nav className=" w-full flex flex-row justify-between">
           <Email />
@@ -61,15 +63,15 @@ export default function Edit() {
               className=" w-full h-8"
               type="text"
               placeholder={name}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
             />
             <input
               className=" w-full h-8"
               type="text"
               placeholder={userName}
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              value={editUserName}
+              onChange={(e) => setEditUserName(e.target.value)}
             />
             <input
               className=" w-full h-8"
