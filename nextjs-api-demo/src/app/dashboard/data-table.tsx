@@ -76,23 +76,22 @@ export function DataTable<TUsers, TValue>() {
       accessorKey: "action",
       header: "Actions",
       cell: ({ row }) => {
+        const users = {
+          id: row.original.id,
+          email: row.original.email,
+          name: row.original.name,
+          username: row.original.username,
+        };
         return (
           <div className=" w-full h-auto flex flex-row gap-4">
             <button
-              onClick={() => deleteAxiosUser(row.original.id)}
+              onClick={() => deleteAxiosUser(users.id)}
               className=" bg-red-700 w-24 h-full rounded-md"
             >
               Delete
             </button>
             <button
-              onClick={() =>
-                editUser(
-                  row.original.id,
-                  row.original.email,
-                  row.original.name,
-                  row.original.username
-                )
-              }
+              onClick={() => editUser(users)}
               className=" bg-green-600 w-24 h-full rounded-md"
             >
               Edit
@@ -113,11 +112,11 @@ export function DataTable<TUsers, TValue>() {
     }
   }
 
-  function editUser(id: string, email: string, name: string, userName: string) {
-    setId(id);
-    setEmail(email);
-    setName(name);
-    setUserName(userName);
+  function editUser(user: Users) {
+    setId(user.id);
+    setEmail(user.email);
+    setName(user.name);
+    setUserName(user.username);
     router.push("/dashboard/edit");
   }
 
