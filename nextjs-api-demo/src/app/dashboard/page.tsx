@@ -1,5 +1,3 @@
-import Logout from "./logout";
-import Email from "../components/email";
 import { Metadata } from "next";
 import { DataTable } from "./data-table";
 import Navbar from "../components/navbar";
