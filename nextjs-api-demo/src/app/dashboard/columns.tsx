@@ -1,6 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-import Delete from "./delete";
-import { Checkbox } from "@radix-ui/react-checkbox";
 
 interface Users {
   id: string;
