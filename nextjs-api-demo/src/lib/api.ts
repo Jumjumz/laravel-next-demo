@@ -20,9 +20,4 @@ const api = axios.create({
 
 });
 
-/*axios.defaults.withCredentials = true;
-axios.defaults.withXSRFToken = true;
-axios.defaults.xsrfHeaderName = "XSRF-TOKEN";*/
-
-
 export default api;
