@@ -32,7 +32,6 @@ export default function Edit() {
         {
           name: editName,
           username: editUserName,
-          email: editEmail,
         },
         { withCredentials: true }
       );
