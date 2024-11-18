@@ -56,7 +56,7 @@ export default function Edit() {
               className=" w-full h-8"
               type="text"
               placeholder={name}
-              value={editName}
+              value={editName === "" ? name : ""}
               onChange={(e) => setEditName(e.target.value)}
             />
             <input
