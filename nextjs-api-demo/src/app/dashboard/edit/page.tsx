@@ -18,7 +18,6 @@ export default function Edit() {
   const userEmail = useAuthUpdate((set) => set.email);
   const name = useAuthUpdate((set) => set.name);
   const userName = useAuthUpdate((set) => set.username);
-  const [editEmail, setEditEmail] = useState("");
   const [editName, setEditName] = useState("");
   const [editUserName, setEditUserName] = useState("");
 
