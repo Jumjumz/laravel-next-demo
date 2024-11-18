@@ -58,15 +58,13 @@ export default function Edit() {
               placeholder={name}
               value={editName}
               onChange={(e) => setEditName(e.target.value)}
-              required
             />
             <input
               className=" w-full h-8"
               type="text"
               placeholder={userName}
-              value={editUserName}
+              value={editUserName === "" ? userName : editUserName}
               onChange={(e) => setEditUserName(e.target.value)}
-              required
             />
             <button type="submit" className=" w-24 bg-blue-700 self-center">
               Edit
