@@ -18,8 +18,10 @@ export default function Edit() {
   const userEmail = useAuthUpdate((set) => set.email);
   const name = useAuthUpdate((set) => set.name);
   const userName = useAuthUpdate((set) => set.username);
-  const [editName, setEditName] = useState("");
-  const [editUserName, setEditUserName] = useState("");
+  const editName = useAuthUpdate((set) => set.setName);
+  const editUserName = useAuthUpdate((set) => set.setUserName);
+  /*const [editName, setEditName] = useState("");
+  const [editUserName, setEditUserName] = useState("");*/
 
   const router = useRouter();
 
@@ -29,8 +31,8 @@ export default function Edit() {
       const response = await api.put(
         `update/${userId}`,
         {
-          name: editName,
-          username: editUserName,
+          name: name,
+          username: userName,
         },
         { withCredentials: true }
       );
@@ -56,15 +58,15 @@ export default function Edit() {
               className=" w-full h-8"
               type="text"
               placeholder={name}
-              value={editName === "" ? name : editName}
-              onChange={(e) => setEditName(e.target.value)}
+              value={name}
+              onChange={(e) => editName(e.target.value)}
             />
             <input
               className=" w-full h-8"
               type="text"
               placeholder={userName}
-              value={editUserName !== "" ? editUserName : userName}
-              onChange={(e) => setEditUserName(e.target.value)}
+              value={userName}
+              onChange={(e) => editUserName(e.target.value)}
             />
             <button type="submit" className=" w-24 bg-blue-700 self-center">
               Edit
