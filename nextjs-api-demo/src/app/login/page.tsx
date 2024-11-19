@@ -37,7 +37,6 @@ export default function Login() {
       setMessage("User Logged In");
       loginEmail(response.data["email"]);
       router.push("/dashboard");
-      //router.push(`/dashboard/?email=${email}`);
     } catch (err) {
       console.error("Post failed", err);
       setMessage("Failed to Log In");
