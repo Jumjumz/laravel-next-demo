@@ -20,8 +20,6 @@ export default function Edit() {
   const userName = useAuthUpdate((set) => set.username);
   const editName = useAuthUpdate((set) => set.setName);
   const editUserName = useAuthUpdate((set) => set.setUserName);
-  /*const [editName, setEditName] = useState("");
-  const [editUserName, setEditUserName] = useState("");*/
 
   const router = useRouter();
 
