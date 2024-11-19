@@ -4,6 +4,7 @@ import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuthPersist } from "../stores/useAuthStore";
+import Link from "next/link";
 
 interface Register {
   _id: string;
@@ -73,6 +74,11 @@ export default function Login() {
               Login
             </button>
           </form>
+          <Link href="/register">
+            <button className="w-full h-8 bg-blue-700 rounded-md text-white">
+              Register
+            </button>
+          </Link>
           <h4 className="w-full text-center text-white">{message}</h4>
         </div>
       </main>
