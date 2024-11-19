@@ -5,7 +5,6 @@ import api from "@/lib/api";
 import Link from "next/link";
 import { useAuthUpdate } from "@/app/stores/useAuthStore";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import Navbar from "@/app/components/navbar";
 
 interface Users {
