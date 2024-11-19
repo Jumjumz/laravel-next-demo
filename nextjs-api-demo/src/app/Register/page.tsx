@@ -4,6 +4,7 @@ import api from "@/lib/api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthPersist } from "../stores/useAuthStore";
+import Link from "next/link";
 
 interface Register {
   _id: string;
@@ -51,7 +52,7 @@ export default function Register() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <div className=" w-80 h-72">
+        <div className=" w-80 h-72 flex flex-col gap-4">
           <form
             onSubmit={postAxiosRegister}
             method="POST"
@@ -94,6 +95,11 @@ export default function Register() {
               Register
             </button>
           </form>
+          <Link href="/login">
+            <button className="w-full h-8 bg-green-600 rounded-md text-white">
+              Back
+            </button>
+          </Link>
           <h4 className="w-full text-center text-white">{message}</h4>
         </div>
       </main>
