@@ -97,7 +97,7 @@ export default function Register() {
           </form>
           <Link href="/login">
             <button className="w-full h-8 bg-green-600 rounded-md text-white">
-              Back
+              Login
             </button>
           </Link>
           <h4 className="w-full text-center text-white">{message}</h4>
