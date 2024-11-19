@@ -92,8 +92,8 @@ class UserController extends Controller
         $user = User::findOrFail(($id));
 
         $validate = $request->validate([
-            'name' => 'nullable|string|max:255',
-            'username' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
         ]);
 
         $user->update($validate);
