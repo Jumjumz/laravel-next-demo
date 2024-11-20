@@ -14,7 +14,7 @@ interface Register {
 
 export default function Register() {
   //const [register, setRegister] = useState({});
-  const ROLE: string = "Admin";
+  const ROLE = "Admin";
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
