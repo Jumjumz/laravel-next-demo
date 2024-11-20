@@ -40,10 +40,11 @@ export default function Register() {
           username: userName,
           email: email,
           password: password,
-          role: userRole(ROLE),
+          role: ROLE,
         },
         { withCredentials: true }
       );
+      userRole(ROLE);
       setMessage("User Registered!");
       registerEmail(response.data["email"]);
       router.push("/dashboard");
