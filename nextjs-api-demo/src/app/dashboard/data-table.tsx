@@ -53,6 +53,8 @@ export function DataTable<TUsers, TValue>() {
   const setName = useAuthUpdate((set) => set.setName);
   const setUserName = useAuthUpdate((set) => set.setUserName);
 
+  const userRole = useAuthUpdate((set) => set.role);
+
   const columns: ColumnDef<Users>[] = [
     {
       accessorKey: "name",
@@ -85,7 +87,7 @@ export function DataTable<TUsers, TValue>() {
           username: row.original.username,
           role: row.original.role,
         };
-        return users.role === "Admin" ? (
+        return userRole === "Admin" ? (
           <div className=" w-full h-auto flex flex-row gap-4">
             <button
               onClick={() => deleteAxiosUser(users.id)}
