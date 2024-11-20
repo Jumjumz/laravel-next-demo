@@ -28,6 +28,7 @@ interface Users {
   email: string;
   name: string;
   username: string;
+  role: string;
 }
 
 // fetch users in the backend
@@ -46,8 +47,6 @@ export function DataTable<TUsers, TValue>() {
   const [destroy, setDestroy] = useState(false);
 
   const router = useRouter();
-
-  const userRole = useAuthUpdate((set) => set.role);
 
   const setId = useAuthUpdate((set) => set.setId);
   const setEmail = useAuthUpdate((set) => set.setEmail);
@@ -84,8 +83,9 @@ export function DataTable<TUsers, TValue>() {
           email: row.original.email,
           name: row.original.name,
           username: row.original.username,
+          role: row.original.role,
         };
-        return (
+        return users.role === "Admin" ? (
           <div className=" w-full h-auto flex flex-row gap-4">
             <button
               onClick={() => deleteAxiosUser(users.id)}
@@ -100,6 +100,8 @@ export function DataTable<TUsers, TValue>() {
               Edit
             </button>
           </div>
+        ) : (
+          <div></div>
         );
       },
     },
