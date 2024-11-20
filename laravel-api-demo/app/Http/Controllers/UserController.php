@@ -30,8 +30,9 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $email = $credentials['email'];
+            $role = Auth::user();
             
-            return response()->json(['email' => $email], 201);
+            return response()->json(['email' => $email, 'role' => $role->role], 201);
         }
         
         throw ValidationException::withMessages([
