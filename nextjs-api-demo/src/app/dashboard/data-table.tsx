@@ -46,6 +46,9 @@ export function DataTable<TUsers, TValue>() {
   const [destroy, setDestroy] = useState(false);
 
   const router = useRouter();
+
+  const userRole = useAuthUpdate((set) => set.role);
+
   const setId = useAuthUpdate((set) => set.setId);
   const setEmail = useAuthUpdate((set) => set.setEmail);
   const setName = useAuthUpdate((set) => set.setName);
