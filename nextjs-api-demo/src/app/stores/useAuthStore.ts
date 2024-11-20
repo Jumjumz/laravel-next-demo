@@ -12,6 +12,7 @@ interface AuthPersist {
     setEmail : (email : string) => void;
     setRole : (role: string) => void;
     clearEmail : () => void;
+    clearRole : () => void;
 }
 
 interface AuthUpdate {
@@ -57,6 +58,7 @@ export const useAuthPersist = create<AuthPersist> ()(
             setEmail : (email : string) => set(() => ({ email })),
             setRole : (role :string) => set(() => ({ role })),
             clearEmail : () => set(() => ({ email : " "})),
+            clearRole : () => set(() => ({ role : " " })),
         }),
         {
             name: 'auth-storage',
