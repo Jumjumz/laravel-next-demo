@@ -3,7 +3,7 @@
 import api from "@/lib/api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthPersist } from "../stores/useAuthStore";
+import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
 import Link from "next/link";
 
 interface Register {
@@ -15,13 +15,17 @@ interface Register {
 export default function Register() {
   //const [register, setRegister] = useState({});
   const ROLE = "Admin";
+
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const registerEmail = useAuthPersist((state) => state.setEmail);
+
   const router = useRouter();
+
+  const userRole = useAuthUpdate((set) => set.setRole);
 
   async function postAxiosRegister(event: React.FormEvent) {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
@@ -36,7 +40,7 @@ export default function Register() {
           username: userName,
           email: email,
           password: password,
-          role: ROLE,
+          role: userRole(ROLE),
         },
         { withCredentials: true }
       );
