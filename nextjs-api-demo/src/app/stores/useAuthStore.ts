@@ -17,10 +17,12 @@ interface AuthUpdate {
     email: string,
     name: string,
     username: string,
+    role: string,
     setId: (id: string) => void;
     setEmail: (email: string) => void;
     setName: (name: string) => void;
     setUserName: (userName: string) => void;
+    setRole: (role: string) => void;
 }
 
 export const useAuthStore = create<AuthStore> ((set) => ({
@@ -35,10 +37,12 @@ export const useAuthUpdate = create<AuthUpdate> ()(
             email: "",
             name: "",
             username: "",
+            role: "",
             setId : (id : string) => set(() => ({ id })),
             setEmail : (email: string) => set(() => ({ email })),
             setName: (name : string) => set(() => ({ name })),
             setUserName : (username : string) => set(() => ({ username })),
+            setRole: (role: string) => set(() => ({ role })),
         }),
         {
             name: 'auth-update',
