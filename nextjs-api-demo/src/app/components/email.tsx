@@ -4,7 +4,7 @@ import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
 
 export default function Email() {
   const email = useAuthPersist((state) => state.email);
-  const role = useAuthUpdate((state) => state.role);
+  const role = useAuthPersist((state) => state.role);
   return (
     <div className=" flex flex-row gap-4">
       <h2 className=" text-white font-mono text-xl">{email}</h2>

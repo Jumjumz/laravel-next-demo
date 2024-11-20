@@ -21,7 +21,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
-import { useAuthUpdate } from "../stores/useAuthStore";
+import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
 
 interface Users {
   id: string;
@@ -53,7 +53,7 @@ export function DataTable<TUsers, TValue>() {
   const setName = useAuthUpdate((set) => set.setName);
   const setUserName = useAuthUpdate((set) => set.setUserName);
 
-  const userRole = useAuthUpdate((set) => set.role);
+  const userRole = useAuthPersist((set) => set.role);
 
   const columns: ColumnDef<Users>[] = [
     {

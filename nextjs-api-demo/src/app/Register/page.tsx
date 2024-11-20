@@ -21,11 +21,10 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
+
   const registerEmail = useAuthPersist((state) => state.setEmail);
 
   const router = useRouter();
-
-  const userRole = useAuthUpdate((set) => set.setRole);
 
   async function postAxiosRegister(event: React.FormEvent) {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
@@ -44,9 +43,10 @@ export default function Register() {
         },
         { withCredentials: true }
       );
-      userRole(ROLE);
       setMessage("User Registered!");
+
       registerEmail(response.data["email"]);
+
       router.push("/dashboard");
     } catch (err) {
       console.error("Post failed", err);

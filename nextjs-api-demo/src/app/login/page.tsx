@@ -3,7 +3,7 @@
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useAuthPersist } from "../stores/useAuthStore";
+import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
 import Link from "next/link";
 
 interface Register {
@@ -15,9 +15,12 @@ interface Register {
 export default function Login() {
   //const [register, setRegister] = useState({});
   const loginEmail = useAuthPersist((state) => state.setEmail);
+  const userRole = useAuthPersist((state) => state.setRole);
+
   const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const router = useRouter();
 
   async function postAxiosLogin(event: React.FormEvent) {
@@ -35,7 +38,10 @@ export default function Login() {
         { withCredentials: true }
       );
       setMessage("User Logged In");
+
+      userRole(response.data["role"]);
       loginEmail(response.data["email"]);
+
       router.push("/dashboard");
     } catch (err) {
       console.error("Post failed", err);
