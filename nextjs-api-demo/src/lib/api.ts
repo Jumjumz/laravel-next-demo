@@ -1,6 +1,5 @@
 import axios from "axios";
 import https from "https";
-import Cookies from "js-cookie";
 
 const agent = new https.Agent({
     rejectUnauthorized: false, // ignore cert ! WARNING: DO NOT INCLUDE IN PROD ! 
