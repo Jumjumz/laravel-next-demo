@@ -103,7 +103,14 @@ export function DataTable<TUsers, TValue>() {
             </button>
           </div>
         ) : (
-          <div></div>
+          <div className=" w-full h-auto flex flex-row gap-4">
+            <button
+              onClick={() => editUser(users)}
+              className=" bg-green-600 w-24 h-full rounded-md"
+            >
+              Edit
+            </button>
+          </div>
         );
       },
     },
