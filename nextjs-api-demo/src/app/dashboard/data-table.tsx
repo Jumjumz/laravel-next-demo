@@ -48,6 +48,8 @@ export function DataTable<TUsers, TValue>() {
 
   const router = useRouter();
 
+  const userEmail = useAuthPersist((set) => set.email);
+
   const setId = useAuthUpdate((set) => set.setId);
   const setEmail = useAuthUpdate((set) => set.setEmail);
   const setName = useAuthUpdate((set) => set.setName);
