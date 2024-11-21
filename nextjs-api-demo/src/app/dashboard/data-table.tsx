@@ -104,7 +104,7 @@ export function DataTable<TUsers, TValue>() {
               Edit
             </button>
           </div>
-        ) : (
+        ) : userEmail === row.original.email ? (
           <div className=" w-full h-auto flex flex-row gap-4">
             <button
               onClick={() => editUser(users)}
@@ -113,6 +113,8 @@ export function DataTable<TUsers, TValue>() {
               Edit
             </button>
           </div>
+        ) : (
+          <div></div>
         );
       },
     },
