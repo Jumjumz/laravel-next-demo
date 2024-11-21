@@ -13,7 +13,6 @@ interface Register {
 }
 
 export default function Login() {
-  //const [register, setRegister] = useState({});
   const loginEmail = useAuthPersist((state) => state.setEmail);
   const userRole = useAuthPersist((state) => state.setRole);
 
