@@ -14,11 +14,14 @@ class UserOnline implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $email;
+
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct($email)
     {
+        $this->email = $email;
         //
     }
 
@@ -30,7 +33,8 @@ class UserOnline implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('channel-name'),
+            //new PrivateChannel('channel-name'),
+            new Channel('user' . $this->email->id)
         ];
     }
 }
