@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 
@@ -9,6 +11,15 @@ const echo = new Echo({
     wsPort: process.env.NEXT_PUBLIC_HOST_PORT ?? 80,
     forceTLS: false,
     disableStats: true,
+    authorizer: (channel, options) => {
+        return {
+            authorize: (socketId, callback) => {
+                axios.post('api/broadcasting/auth', {
+
+                })
+            }
+        }
+    }
 
 });
 
