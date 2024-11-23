@@ -11,11 +11,18 @@ const echo = new Echo({
     wsPort: process.env.NEXT_PUBLIC_HOST_PORT ?? 80,
     forceTLS: false,
     disableStats: true,
-    authorizer: (channel, options) => {
+    authorizer: ({channel, options} : any) => {
         return {
-            authorize: (socketId, callback) => {
+            authorize: ({socketId, callback} : any) => {
                 axios.post('api/broadcasting/auth', {
-
+                    socket_Id : socketId,
+                    channel_name : channel.name
+                })
+                .then(response => {
+                    callback(false, response.data);
+                })
+                .catch(error => {
+                    callback(true, error);
                 })
             }
         }
