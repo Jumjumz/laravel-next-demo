@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserOnline;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,8 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $email = $credentials['email'];
             $role = Auth::user();
+
+            broadcast(new UserOnline($email)); // laravel reverd config
             
             return response()->json(['email' => $email, 'role' => $role->role], 201);
         }
