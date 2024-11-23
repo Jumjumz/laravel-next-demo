@@ -22,6 +22,7 @@ import { useEffect, useMemo, useState } from "react";
 import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
+import echo from "@/lib/echo";
 
 interface Users {
   id: string;
@@ -45,6 +46,7 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 export function DataTable<TUsers, TValue>() {
   const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
+  const [status, setStatus] = useState("offline");
 
   const router = useRouter();
 
@@ -142,6 +144,13 @@ export function DataTable<TUsers, TValue>() {
     if (!destroy) {
       getAxiosUser().then((response) => {
         setUsers(response);
+
+        const user = users?.map((user) => user.id);
+
+        echo.private(`user.${user}`).listen("UserOnline", () => {
+          setStatus("Online");
+        });
+        console.log(status);
       });
     }
   }, []);
