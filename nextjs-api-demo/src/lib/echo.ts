@@ -5,9 +5,8 @@ import Pusher from "pusher-js";
 
 window.Pusher = Pusher;
 
-
 const echo = new Echo({
-    broadcaster: "pusher",
+    broadcaster: "reverb",
     key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY,
     cluster: "mt1",
     wsHost: process.env.NEXT_PUBLIC_WS_HOST,
@@ -15,6 +14,7 @@ const echo = new Echo({
     encrypted: true,
     forceTLS: false,
     disableStats: true,
+    enabledTransports: ['ws', 'was'],
     authorizer: ({channel, options} : any) => {
         return {
             authorize: ({socketId, callback} : any) => {
