@@ -3,10 +3,13 @@ import axios from "axios";
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 
+window.Pusher = Pusher;
+
 
 const echo = new Echo({
-    broadcaster: "reverb",
+    broadcaster: "pusher",
     key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY,
+    cluster: "mt1",
     wsHost: process.env.NEXT_PUBLIC_WS_HOST,
     wsPort: process.env.NEXT_PUBLIC_HOST_PORT ?? 80,
     encrypted: true,
