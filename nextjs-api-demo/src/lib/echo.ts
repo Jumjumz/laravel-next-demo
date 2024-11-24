@@ -1,7 +1,7 @@
+import axios from "axios";
+
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
-
-import api from "./api";
 
 window.Pusher = Pusher;
 
@@ -22,7 +22,7 @@ const echo = new Echo({
   authorizer: ({ channel, options }: any) => {
     return {
       authorize: ({ socketId, callback }: any) => {
-        api
+        axios
           .post("/api/broadcasting/auth", {
             socket_Id: socketId,
             channel_name: channel.name,
