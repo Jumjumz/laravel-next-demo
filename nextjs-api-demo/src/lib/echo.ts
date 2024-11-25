@@ -2,6 +2,7 @@ import axios from "axios";
 
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
+import api from "./api";
 
 //@ts-ignore
 window.Pusher = Pusher;
@@ -9,11 +10,12 @@ window.Pusher = Pusher;
 const echo = new Echo({
   broadcaster: "reverb",
   key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY,
-  wsHost: process.env.NEXT_PUBLIC_WS_HOST,
-  wssHost: process.env.NEXT_PUBLIC_WS_HOST,
-  wsPort: process.env.NEXT_PUBLIC_HOST_PORT ?? 80,
-  wssPort: process.env.NEXT_PUBLIC_HOST_PORT ?? 443,
-  forceTLS: (process.env.NEXT_PUBLIC_SCHEME ?? "https") === "https",
+  wsHost: "api.demo.test",
+  //wssHost: process.env.NEXT_PUBLIC_WS_HOST,
+  wsPort: 443,
+  //wssPort: process.env.NEXT_PUBLIC_HOST_PORT ?? 443,
+  //forceTLS: (process.env.NEXT_PUBLIC_SCHEME ?? "https") === "https",
+  forceTLS: true,
   encrypted: false,
   disableStats: true,
   enabledTransports: ["ws", "wss"],
@@ -23,7 +25,7 @@ const echo = new Echo({
   authorizer: ({ channel, options }: any) => {
     return {
       authorize: ({ socketId, callback }: any) => {
-        axios
+        api
           .post("/api/broadcasting/auth", {
             socket_Id: socketId,
             channel_name: channel.name,
