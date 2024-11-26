@@ -33,7 +33,7 @@ class UserController extends Controller
             $email = $credentials['email'];
             $role = Auth::user();
 
-            broadcast(new UserOnline($email)); // laravel reverd config
+            // broadcast(new UserOnline($email)); // laravel reverd config
             
             return response()->json(['email' => $email, 'role' => $role->role], 201);
         }
