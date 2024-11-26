@@ -3,7 +3,6 @@
 "use client";
 
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -20,14 +19,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { useEffect, useMemo, useState } from "react";
-
-import api from "@/lib/api";
-
-import { useRouter } from "next/navigation";
-import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
-import echo from "@/lib/echo";
-
 interface Users {
   id: string;
   email: string;
@@ -38,7 +29,7 @@ interface Users {
 
 export function DataTable<TUsers, TValue>() {
   const table = useReactTable({
-    data: dataTable,
+    data : ,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
