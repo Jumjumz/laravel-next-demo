@@ -8,6 +8,7 @@ import {
   useReactTable,
   getPaginationRowModel,
   getFilteredRowModel,
+  ColumnDef,
 } from "@tanstack/react-table";
 
 import {
@@ -19,17 +20,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-interface Users {
-  id: string;
-  email: string;
-  name: string;
-  username: string;
-  role: string;
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>;
+  data: TData[];
 }
 
-export function DataTable<TUsers, TValue>() {
+export function DataTable<TData, TValue>({
+  columns,
+  data,
+}: DataTableProps<TData, TValue>) {
   const table = useReactTable({
-    data : ,
+    data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
