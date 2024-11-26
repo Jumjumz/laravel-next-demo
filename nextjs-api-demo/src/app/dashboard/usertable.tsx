@@ -15,6 +15,17 @@ interface Users {
   role: string;
 }
 
+// fetch users from the backend
+async function getAxiosUser(): Promise<Users[] | undefined> {
+  try {
+    const response = await api.get("/users", { withCredentials: true });
+    return response.data;
+  } catch (err) {
+    console.error("Fetch failed", err);
+    return undefined;
+  }
+}
+
 export default function UserTable() {
   const [users, setUsers] = useState<Users[] | undefined>();
 }
