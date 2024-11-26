@@ -37,34 +37,6 @@ interface Users {
 }
 
 export function DataTable<TUsers, TValue>() {
-  async function deleteAxiosUser(id: string) {
-    try {
-      await api.delete(`delete/${id}`);
-      setDestroy(true);
-      setUsers((tableState) => tableState?.filter((state) => state.id !== id));
-    } catch (err) {
-      console.error("Failed to delete", err);
-    }
-  }
-
-  function editUser(user: Users) {
-    setId(user.id);
-    setEmail(user.email);
-    setName(user.name);
-    setUserName(user.username);
-    router.push("/dashboard/edit");
-  }
-
-  useEffect(() => {
-    if (!destroy) {
-      getAxiosUser().then((response) => {
-        setUsers(response);
-      });
-    }
-  }, []);
-
-  const dataTable = useMemo(() => users ?? [], [users]);
-
   const table = useReactTable({
     data: dataTable,
     columns,
