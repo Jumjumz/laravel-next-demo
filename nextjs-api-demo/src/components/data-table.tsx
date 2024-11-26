@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
         <TableBody className=" text-white font-mono">
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows?.map((row) => (
-              <TableRow key={row.original.id} data-state={row.original.id}>
+              <TableRow key={row.id} data-state={row.id}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
