@@ -48,7 +48,6 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 export function DataTable<TUsers, TValue>() {
   const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
-  const [status, setStatus] = useState("Offline");
 
   const router = useRouter();
 
