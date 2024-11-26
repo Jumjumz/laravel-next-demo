@@ -79,13 +79,6 @@ export function DataTable<TUsers, TValue>() {
       header: "Role",
     },
     {
-      accessorKey: "status",
-      header: "Status",
-      cell: () => {
-        return <h2>{status}</h2>;
-      },
-    },
-    {
       accessorKey: "action",
       header: "Actions",
       cell: ({ row }) => {
