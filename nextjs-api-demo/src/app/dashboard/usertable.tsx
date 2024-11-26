@@ -7,11 +7,14 @@ import { columns } from "./columns";
 
 import { useEffect, useState } from "react";
 
-interface User {
+interface Users {
   id: string;
   email: string;
+  name: string;
+  username: string;
+  role: string;
 }
 
 export default function UserTable() {
-  const [users, setUsers] = useState<User[] | undefined>();
+  const [users, setUsers] = useState<Users[] | undefined>();
 }
