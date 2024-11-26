@@ -149,13 +149,6 @@ export function DataTable<TUsers, TValue>() {
     if (!destroy) {
       getAxiosUser().then((response) => {
         setUsers(response);
-
-        const user = users?.map((user) => user.id);
-
-        echo.private(`user.${user}`).listen("UserOnline", () => {
-          setStatus("Online");
-        });
-        console.log(status);
       });
     }
   }, []);
