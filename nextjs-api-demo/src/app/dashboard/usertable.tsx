@@ -6,6 +6,7 @@ import { DataTable } from "./data-table";
 import { columns } from "./columns";
 
 import { useEffect, useState } from "react";
+import { GlobalTable } from "@/components/data-table";
 
 interface Users {
   id: string;
@@ -29,9 +30,70 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 export default function UserTable() {
   const [users, setUsers] = useState<Users[] | undefined>();
 
+  const columns: ColumnDef<Users>[] = [
+    {
+      accessorKey: "name",
+      header: "Name",
+    },
+    {
+      accessorKey: "username",
+      header: "Username",
+    },
+    {
+      accessorKey: "email",
+      header: "Email",
+    },
+    {
+      accessorKey: "role",
+      header: "Role",
+    },
+    {
+      accessorKey: "action",
+      header: "Actions",
+      cell: ({ row }) => {
+        const users = {
+          id: row.original.id,
+          email: row.original.email,
+          name: row.original.name,
+          username: row.original.username,
+          role: row.original.role,
+        };
+        return userRole === "Admin" ? (
+          <div className=" w-full h-auto flex flex-row gap-4">
+            <button
+              onClick={() => deleteAxiosUser(users.id)}
+              className=" bg-red-700 w-24 h-full rounded-md"
+            >
+              Delete
+            </button>
+            <button
+              onClick={() => editUser(users)}
+              className=" bg-green-600 w-24 h-full rounded-md"
+            >
+              Edit
+            </button>
+          </div>
+        ) : userEmail === row.original.email ? (
+          <div className=" w-full h-auto flex flex-row gap-4">
+            <button
+              onClick={() => editUser(users)}
+              className=" bg-green-600 w-24 h-full rounded-md"
+            >
+              Edit
+            </button>
+          </div>
+        ) : (
+          <div></div>
+        );
+      },
+    },
+  ];
+
   useEffect(() => {
     getAxiosUser().then((response) => {
       setUsers(response);
     });
   }, []);
+
+  return <GlobalTable data={users!} columns={columns} />;
 }
