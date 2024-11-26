@@ -28,4 +28,10 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 
 export default function UserTable() {
   const [users, setUsers] = useState<Users[] | undefined>();
+
+  useEffect(() => {
+    getAxiosUser().then((response) => {
+      setUsers(response);
+    });
+  }, []);
 }
