@@ -110,5 +110,15 @@ export default function UserTable() {
     });
   }, []);
 
+  async function deleteAxiosUser(id: string) {
+    try {
+      await api.delete(`delete/${id}`);
+      setDestroy(true);
+      setUsers((tableState) => tableState?.filter((state) => state.id !== id));
+    } catch (err) {
+      console.error("Failed to delete", err);
+    }
+  }
+
   return <GlobalTable data={users!} columns={columns} />;
 }
