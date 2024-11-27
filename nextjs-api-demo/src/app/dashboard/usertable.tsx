@@ -2,13 +2,14 @@
 
 import api from "@/lib/api";
 
-import { DataTable } from "./data-table";
-import { columns } from "./columns";
-
 import { useEffect, useState } from "react";
 import { GlobalTable } from "@/components/data-table";
 
 import { ColumnDef } from "@tanstack/react-table";
+
+import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
+
+import { useRouter } from "next/navigation";
 
 interface Users {
   id: string;
@@ -31,6 +32,18 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 
 export default function UserTable() {
   const [users, setUsers] = useState<Users[] | undefined>();
+  const [destroy, setDestroy] = useState(false);
+
+  const router = useRouter();
+
+  const userEmail = useAuthPersist((set) => set.email);
+
+  const setId = useAuthUpdate((set) => set.setId);
+  const setEmail = useAuthUpdate((set) => set.setEmail);
+  const setName = useAuthUpdate((set) => set.setName);
+  const setUserName = useAuthUpdate((set) => set.setUserName);
+
+  const userRole = useAuthPersist((set) => set.role);
 
   const columns: ColumnDef<Users>[] = [
     {
