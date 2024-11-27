@@ -8,6 +8,8 @@ import { columns } from "./columns";
 import { useEffect, useState } from "react";
 import { GlobalTable } from "@/components/data-table";
 
+import { ColumnDef } from "@tanstack/react-table";
+
 interface Users {
   id: string;
   email: string;
