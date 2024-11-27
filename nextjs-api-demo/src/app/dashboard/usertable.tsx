@@ -120,5 +120,13 @@ export default function UserTable() {
     }
   }
 
+  function editUser(user: Users) {
+    setId(user.id);
+    setEmail(user.email);
+    setName(user.name);
+    setUserName(user.username);
+    router.push("/dashboard/edit");
+  }
+
   return <GlobalTable data={users!} columns={columns} />;
 }
