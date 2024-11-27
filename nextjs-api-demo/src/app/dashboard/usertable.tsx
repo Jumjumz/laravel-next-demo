@@ -75,7 +75,7 @@ export default function UserTable() {
           username: row.original.username,
           role: row.original.role,
         };
-        return userRole === "Admin" ? (
+        return userRole === "Admin" && userEmail !== row.original.email ? (
           <div className=" w-full h-auto flex flex-row gap-4">
             <button
               onClick={() => deleteAxiosUser(users.id)}

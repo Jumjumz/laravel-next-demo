@@ -30,9 +30,7 @@ export default function Register() {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
     event.preventDefault();
     try {
-      await api.get("/sanctum/csrf-cookie", { withCredentials: true });
-
-      const response = await api.post(
+      await api.post(
         "/register",
         {
           name: name,
@@ -45,9 +43,9 @@ export default function Register() {
       );
       setMessage("User Registered!");
 
-      registerEmail(response.data["email"]);
+      registerEmail(email);
 
-      router.push("/dashboard");
+      router.push("/login");
     } catch (err) {
       console.error("Post failed", err);
       setMessage("Failed to Register");
