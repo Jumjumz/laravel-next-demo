@@ -2,7 +2,7 @@
 
 import api from "@/lib/api";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { GlobalTable } from "@/components/data-table";
 
 import { ColumnDef } from "@tanstack/react-table";
@@ -33,6 +33,8 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 export default function UserTable() {
   const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
+
+  const dataTable = useMemo(() => users ?? [], [users]);
 
   const router = useRouter();
 
@@ -128,5 +130,5 @@ export default function UserTable() {
     router.push("/dashboard/edit");
   }
 
-  return <GlobalTable data={users!} columns={columns} />;
+  return <GlobalTable data={dataTable} columns={columns} />;
 }

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { DataTable } from "./data-table";
 import Navbar from "../components/navbar";
+import UserTable from "./usertable";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -13,7 +14,7 @@ export default function Dashboard() {
       <main className="flex flex-col gap-8 row-start-2 items-center w-full sm:items-start">
         <Navbar />
         <div className=" w-full">
-          <DataTable />
+          <UserTable />
         </div>
       </main>
     </div>
