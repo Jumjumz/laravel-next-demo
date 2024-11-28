@@ -47,7 +47,7 @@ export default function Register() {
       setMessage("User Registered!");
 
       registerEmail(response.data["email"]);
-      registerRole(ROLE);
+      registerRole(ROLE); // pass the role to global state
 
       router.push("/dashboard");
     } catch (err) {
