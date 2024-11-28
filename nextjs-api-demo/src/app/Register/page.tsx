@@ -30,7 +30,7 @@ export default function Register() {
     //const [resData, setResData] = useState(Promise<Register | undefined>);
     event.preventDefault();
     try {
-      await api.post(
+      const response = await api.post(
         "/register",
         {
           name: name,
@@ -43,7 +43,7 @@ export default function Register() {
       );
       setMessage("User Registered!");
 
-      registerEmail(email);
+      registerEmail(response.data["email"]);
 
       router.push("/login");
     } catch (err) {
