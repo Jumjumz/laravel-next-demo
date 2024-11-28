@@ -23,6 +23,7 @@ export default function Register() {
   const [userName, setUserName] = useState("");
 
   const registerEmail = useAuthPersist((state) => state.setEmail);
+  const registerRole = useAuthPersist((state) => state.setRole);
 
   const router = useRouter();
 
@@ -46,6 +47,7 @@ export default function Register() {
       setMessage("User Registered!");
 
       registerEmail(response.data["email"]);
+      registerRole(ROLE);
 
       router.push("/dashboard");
     } catch (err) {
