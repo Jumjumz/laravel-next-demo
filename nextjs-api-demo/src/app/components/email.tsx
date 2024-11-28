@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
+import { useAuthPersist } from "../stores/useAuthStore";
 
 export default function Email() {
   const email = useAuthPersist((state) => state.email);
