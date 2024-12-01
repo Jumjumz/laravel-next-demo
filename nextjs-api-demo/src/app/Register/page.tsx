@@ -13,7 +13,6 @@ interface Register {
 }
 
 export default function Register() {
-  //const [register, setRegister] = useState({});
   const ROLE = "Admin";
 
   const [message, setMessage] = useState<string | null>();
