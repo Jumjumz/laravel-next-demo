@@ -45,7 +45,6 @@ export default function UserTable() {
   const setEmail = useAuthUpdate((set) => set.setEmail);
   const setName = useAuthUpdate((set) => set.setName);
   const setUserName = useAuthUpdate((set) => set.setUserName);
-
   const userRole = useAuthPersist((set) => set.role);
 
   const columns: ColumnDef<Users>[] = [
