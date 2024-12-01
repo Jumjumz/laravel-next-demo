@@ -31,15 +31,16 @@ async function getAxiosUser(): Promise<Users[] | undefined> {
 }
 
 export default function UserTable() {
+  // this components states
   const [users, setUsers] = useState<Users[] | undefined>();
   const [destroy, setDestroy] = useState(false);
-
+  // memoized the data to avoid users array to be undefine
   const dataTable = useMemo(() => users ?? [], [users]);
 
   const router = useRouter();
 
   const userEmail = useAuthPersist((set) => set.email);
-
+  // zustand global state
   const setId = useAuthUpdate((set) => set.setId);
   const setEmail = useAuthUpdate((set) => set.setEmail);
   const setName = useAuthUpdate((set) => set.setName);
