@@ -3,7 +3,7 @@
 import api from "@/lib/api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
+import { useAuthPersist } from "../stores/useAuthStore";
 import Link from "next/link";
 
 interface Register {
@@ -27,7 +27,6 @@ export default function Register() {
   const router = useRouter();
 
   async function postAxiosRegister(event: React.FormEvent) {
-    //const [resData, setResData] = useState(Promise<Register | undefined>);
     event.preventDefault();
     try {
       await api.get("/sanctum/csrf-cookie", { withCredentials: true });
