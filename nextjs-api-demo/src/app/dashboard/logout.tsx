@@ -27,7 +27,10 @@ export default function Logout() {
   };
 
   return (
-    <button onClick={logout} className=" w-44 h-14 bg-white font-black">
+    <button
+      onClick={logout}
+      className=" w-44 h-14 bg-white font-black rounded-md"
+    >
       Logout
     </button>
   );
