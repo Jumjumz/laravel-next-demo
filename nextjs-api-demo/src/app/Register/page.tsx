@@ -15,7 +15,6 @@ interface Register {
 export default function Register() {
   const ROLE = "Admin";
 
-  const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -42,15 +41,13 @@ export default function Register() {
         },
         { withCredentials: true }
       );
-      setMessage("User Registered!");
 
       registerEmail(response.data["email"]);
       registerRole(ROLE); // pass the role to global state
 
       router.push("/dashboard");
     } catch (err) {
-      console.error("Post failed", err);
-      setMessage("Failed to Register");
+      console.error("Register failed", err);
     }
   }
 
@@ -105,7 +102,6 @@ export default function Register() {
               Login
             </button>
           </Link>
-          <h4 className="w-full text-center text-white">{message}</h4>
         </div>
       </main>
     </div>
