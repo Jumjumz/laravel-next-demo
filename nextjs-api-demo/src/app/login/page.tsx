@@ -16,7 +16,6 @@ export default function Login() {
   const loginEmail = useAuthPersist((state) => state.setEmail);
   const userRole = useAuthPersist((state) => state.setRole);
 
-  const [message, setMessage] = useState<string | null>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,7 +35,6 @@ export default function Login() {
         },
         { withCredentials: true }
       );
-      setMessage("User Logged In");
 
       userRole(response.data["role"]);
       loginEmail(response.data["email"]);
@@ -44,7 +42,6 @@ export default function Login() {
       router.push("/dashboard");
     } catch (err) {
       console.error("Post failed", err);
-      setMessage("Failed to Log In");
     }
   }
 
@@ -83,7 +80,6 @@ export default function Login() {
               Register
             </button>
           </Link>
-          <h4 className="w-full text-center text-white">{message}</h4>
         </div>
       </main>
     </div>
