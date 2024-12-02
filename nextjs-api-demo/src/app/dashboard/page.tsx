@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { DataTable } from "./data-table";
 import Navbar from "../components/navbar";
 import UserTable from "./usertable";
 
