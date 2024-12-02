@@ -1,9 +1,11 @@
 "use client";
 
 import api from "@/lib/api";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
+import { useAuthPersist } from "../stores/useAuthStore";
+
 import Link from "next/link";
 
 interface Register {
