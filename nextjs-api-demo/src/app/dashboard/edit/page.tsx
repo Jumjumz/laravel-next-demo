@@ -19,6 +19,7 @@ export default function Edit() {
   const userName = useAuthUpdate((set) => set.username);
   const editName = useAuthUpdate((set) => set.setName);
   const editUserName = useAuthUpdate((set) => set.setUserName);
+  const clearData = useAuthUpdate((set) => set.clearData);
 
   const router = useRouter();
 
@@ -70,7 +71,12 @@ export default function Edit() {
             </button>
           </form>
           <Link href="/dashboard">
-            <button className=" w-24 h-8 bg-white text-black">Back</button>
+            <button
+              onClick={clearData}
+              className=" w-24 h-8 bg-white text-black"
+            >
+              Back
+            </button>
           </Link>
         </div>
       </main>
