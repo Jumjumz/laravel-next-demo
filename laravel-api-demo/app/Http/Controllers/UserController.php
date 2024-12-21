@@ -14,13 +14,13 @@ class UserController extends Controller
 
     public function index() {
         $users = User::all();
-        
+
         return response()->json($users);
     }
 
     public function users() {
         $users = User::all();
-        
+
         return response()->json($users);
     }
     public function login(Request $request) {
@@ -34,10 +34,10 @@ class UserController extends Controller
             $role = Auth::user();
 
             // broadcast(new UserOnline($email)); // laravel reverd config
-            
+
             return response()->json(['email' => $email, 'role' => $role->role], 201);
         }
-        
+
         throw ValidationException::withMessages([
             'email' => __('Invalid Credentials'),
         ]);
@@ -61,7 +61,7 @@ class UserController extends Controller
             'password' => $request->password,
             'role' => $request->role,
         ]);
-        
+
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -69,10 +69,11 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $email = $credentials['email'];
-            
+
             return response()->json(['message' => 'User registered', 'email' => $email], 201);
         }
-        
+
+
         throw ValidationException::withMessages([
             'email' => __('Invalid Credentials'),
         ]);
