@@ -3,16 +3,13 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
 Route::get('/sanctum/csrf-cookie', function () {
     return response()->json('CSRF TOKEN');
 });
+
 Route::get('/disp/users', [UserController::class, 'users']); // display user without middleware
 
-Route::middleware('guest')->group(function () { 
+Route::middleware('guest')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'register']);
 });
