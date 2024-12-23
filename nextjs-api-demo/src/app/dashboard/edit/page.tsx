@@ -13,6 +13,7 @@ interface Users {
 }
 
 export default function Edit() {
+  // zustand global states
   const userId = useAuthUpdate((set) => set.id);
   const userEmail = useAuthUpdate((set) => set.email);
   const name = useAuthUpdate((set) => set.name);
