@@ -12,18 +12,21 @@ use Illuminate\Validation\ValidationException;
 class UserController extends Controller
 {
 
-    public function index() {
+    public function index()
+    {
         $users = User::all();
 
         return response()->json($users);
     }
 
-    public function users() {
+    public function users()
+    {
         $users = User::all();
 
         return response()->json($users);
     }
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -41,16 +44,16 @@ class UserController extends Controller
         throw ValidationException::withMessages([
             'email' => __('Invalid Credentials'),
         ]);
-
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|unique:users|email|max:225',
             'password' => 'required|string|max:10'
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
@@ -77,13 +80,13 @@ class UserController extends Controller
         throw ValidationException::withMessages([
             'email' => __('Invalid Credentials'),
         ]);
-
     }
 
-    public function delete($id) {
-        $user = User::find($id);
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
 
-        if(!$user) {
+        if (!$user) {
             return response()->json(['message' => 'User not found'], 404);
         }
 
@@ -92,7 +95,8 @@ class UserController extends Controller
         return response()->json(['message' => 'User Deleted'], 200);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $user = User::findOrFail(($id));
 
         $validate = $request->validate([
@@ -102,10 +106,11 @@ class UserController extends Controller
 
         $user->update($validate);
 
-        return response()->json(['message' => 'Update Success','user' => $user], 200);
+        return response()->json(['message' => 'Update Success', 'user' => $user], 200);
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::guard('web')->logout();
 
         // remove tokens and cookies in the server
