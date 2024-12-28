@@ -3,9 +3,13 @@
 import api from "@/lib/api";
 
 import Link from "next/link";
+
 import { useAuthUpdate } from "@/app/stores/useAuthStore";
 import { useRouter } from "next/navigation";
+
 import Navbar from "@/app/components/navbar";
+
+import { Button } from "@/components/ui/button";
 
 interface Users {
   id: string;
@@ -67,17 +71,17 @@ export default function Edit() {
               value={userName}
               onChange={(e) => editUserName(e.target.value)}
             />
-            <button type="submit" className=" w-24 bg-blue-700 self-center">
+            <Button type="submit" className=" w-full h-8 self-center">
               Edit
-            </button>
+            </Button>
           </form>
           <Link href="/dashboard">
-            <button
+            <Button
               onClick={clearData}
               className=" w-24 h-8 bg-white text-black"
             >
               Back
-            </button>
+            </Button>
           </Link>
         </div>
       </main>
