@@ -11,6 +11,8 @@ import { useAuthPersist, useAuthUpdate } from "../stores/useAuthStore";
 
 import { useRouter } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
+
 interface Users {
   id: string;
   email: string;
@@ -77,27 +79,30 @@ export default function UserTable() {
         };
         return userRole === "Admin" && userEmail !== row.original.email ? (
           <div className=" w-full h-auto flex flex-row gap-4">
-            <button
+            <Button
               onClick={() => deleteAxiosUser(users.id)}
-              className=" bg-red-700 w-24 h-full rounded-md"
+              className="w-24 h-full"
+              variant="destructive"
             >
               Delete
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => editUser(users)}
-              className=" bg-green-600 w-24 h-full rounded-md"
+              className="w-24 h-full"
+              variant="secondary"
             >
               Edit
-            </button>
+            </Button>
           </div>
         ) : userEmail === row.original.email ? (
           <div className=" w-full h-auto flex flex-row gap-4">
-            <button
+            <Button
               onClick={() => editUser(users)}
-              className=" bg-green-600 w-24 h-full rounded-md"
+              className="w-24 h-full"
+              variant="secondary"
             >
               Edit
-            </button>
+            </Button>
           </div>
         ) : (
           <div></div>
