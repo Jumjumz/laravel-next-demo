@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 
 import { useAuthPersist } from "../stores/useAuthStore";
 
+import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 
 interface Register {
@@ -96,14 +98,14 @@ export default function Register() {
               required
               className="w-full h-8"
             />
-            <button type="submit" className="w-full h-8 bg-white rounded-md">
+            <Button type="submit" className="w-full h-8" variant="destructive">
               Register
-            </button>
+            </Button>
           </form>
           <Link href="/login">
-            <button className="w-full h-8 bg-green-600 rounded-md text-white">
+            <Button className="w-full h-8" variant="secondary">
               Login
-            </button>
+            </Button>
           </Link>
         </div>
       </main>
