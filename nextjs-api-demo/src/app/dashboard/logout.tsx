@@ -4,6 +4,8 @@ import api from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useAuthPersist } from "../stores/useAuthStore";
 
+import { Button } from "@/components/ui/button";
+
 interface User {
   email: string;
 }
@@ -27,11 +29,8 @@ export default function Logout() {
   };
 
   return (
-    <button
-      onClick={logout}
-      className=" w-44 h-14 bg-white font-black rounded-md"
-    >
+    <Button onClick={logout} variant="default">
       Logout
-    </button>
+    </Button>
   );
 }
