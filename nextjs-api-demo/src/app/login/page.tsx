@@ -7,6 +7,8 @@ import { useState } from "react";
 
 import { useAuthPersist } from "../stores/useAuthStore";
 
+import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 
 interface Register {
@@ -74,14 +76,12 @@ export default function Login() {
               required
               className="w-full h-8"
             />
-            <button type="submit" className="w-full h-8 bg-white rounded-md">
+            <Button type="submit" variant="secondary" className="w-full h-8">
               Login
-            </button>
+            </Button>
           </form>
           <Link href="/register">
-            <button className="w-full h-8 bg-blue-700 rounded-md text-white">
-              Register
-            </button>
+            <Button className="w-full h-8">Register</Button>
           </Link>
         </div>
       </main>
