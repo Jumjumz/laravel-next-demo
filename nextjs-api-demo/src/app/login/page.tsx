@@ -11,12 +11,6 @@ import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
 
-interface Register {
-  _id: string;
-  email: string;
-  password: string;
-}
-
 export default function Login() {
   const loginEmail = useAuthPersist((state) => state.setEmail);
   const userRole = useAuthPersist((state) => state.setRole);
