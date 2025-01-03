@@ -6,10 +6,6 @@ import { useAuthPersist } from "../stores/useAuthStore";
 
 import { Button } from "@/components/ui/button";
 
-interface User {
-  email: string;
-}
-
 export default function Logout() {
   const email = useAuthPersist((state) => state.email);
   const clearEmail = useAuthPersist((state) => state.clearEmail);
